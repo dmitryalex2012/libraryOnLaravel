@@ -1,0 +1,10 @@
+# Docker-compose version.
+version: '3'
+
+# The list of services (containers): NGINX, PHP, MySQL
+services:
+  nginx:
+
+    image: nginx
+    ports:
+      - 8098:80
