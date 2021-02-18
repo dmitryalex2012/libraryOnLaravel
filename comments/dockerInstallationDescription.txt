@@ -1,0 +1,23 @@
+
+1. Установить Docker ( https://www.youtube.com/watch?v=a5mxBTGfC5k ).
+	1.1 По ссылке https://github.com/docker/toolbox/releases запустить exe файл.
+	    На рабоч. столе д.б. 3 файла (VB Oracle, Docker QuickInstaller, Kitematic).
+
+	1.2 Д.б. вкл. Intel Virtual Technology в BIOS (раздел "Дополнительно").
+
+	1.3 Запустить "Docker QuickInstaller" на рабоч. столе.
+
+	1.4 В команд. строке среды Bush ввести: docker run hello-world ( для проверки корректности работы
+	    после установки).
+	    Команда docker-compose проверит корректность установкт Docker Composer.
+
+2. Создать файл "Docker-compose.yml". В дан. файле прописать версию "Docker-compose", сети, сервисы.
+
+3. Создать и наполнить директиву "docker" (согласно https://www.youtube.com/watch?v=2wGEirrpWsU).
+
+4. Сборка и запуск контейнеров.
+    4.1 Собрать контейнері (# docker-compose build).
+    4.2 Запустить приложение в фоновом режиме (# docker-compose up -d).
+    4.3 Проверить запущенные сервисы командой (# docker-compose ps).
+
+5. Сгенерировать ключ (# php artisan key:generate).

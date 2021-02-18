@@ -1,0 +1,130 @@
+
+Флаги docker:
+
+-h(—hostname) — имя хоста
+
+-it — создаем сеанс интерактивной работы на подключаемом терминальном устройстве
+
+bush — инициализируем командную оболочку /bin/bush
+
+ps — список всех запущенных контейнеров
+
+ps -a — список всех контейнеров из которых был совершен выход
+
+inspect — дополнительная(подробная) информация о контейнере
+
+name — задаем имя контейнеру
+
+-t — имя создаваемого образа
+
+-e — установка переменных окружения
+
+—link — соединяем образы
+
+-d — запуск в фоновом режиме
+
+-f(—force) — принудительно
+
+
+
+Docker container — основные команды:
+
+$ docker run —name friendly_allen -it ubuntu bash — запускаем образ убунту и задаем ему имя friendly_allen
+
+$ docker run -d -p 8000:8080 bitnami/apache — получаем контейнер и запускаем в фоновом режиме, при этом пробрасываем порты
+
+$ docker start friendly_allen* — перезапуск остановленного контейнера
+
+$ docker stop friendly_allen* — останавливаем контейнер friendly_allen
+
+$ docker inpect friendly_allen* — подробная информация о контейнере
+
+$ docker inpect friendly_allen* | grep IPAdress — выбираем из подробной информации о контейнере данные по ip адресc
+
+$ docker diff friendly_allen — показывает список измененных файлов в работающем контейнере
+
+$ docker logs friendly_allen — выводит список всех событий произошедших внутри заданного контейнера
+
+$ docker rm friendly_allen — удалит историю работы с контейнером
+
+$ docker ps -aq -f status=exited — выводит идентификаторы всех остановленных контейнеров
+
+$ docker rm -v $(docker ps -aq -f status=exited) — удаление всех остановленных контейнеров
+
+$ docker exec -it php-fpm bash — запустим(вызовем) приложение из запущенного контейнера
+
+
+
+* — friendly_allen взят из колонки NAME, при вызове команды docker ps -a
+
+
+
+Docker images — основные команды:
+
+$ docker images — список всех загруженных на компьютер образов
+
+$ docker rmi 4ab4c602aa5e — удаляем образ. 4ab4c602aa5e — id образа, узнать можно командой docker images
+
+$ docker rmi -f 4ab4c602aa5e — принудительно удаляем образ
+
+$ docker rmi $(docker images -a -q) — удаление всех образов
+
+
+
+Docker-compose — основные команды:
+
+$ docker-compose build — сборка контейнера
+
+$ docker-compose up — запуск приложение(мы должны находиться в директории с .yml файлом)
+
+$ docker-compose logs -f - посмотреть логи
+
+
+
+$ docker-compose up —build — запуск проекта с пересоздание контейнеров
+
+$ docker-compose ps — список запущенных сервисов
+
+$ docker-compose stop — остановить запущенные в фоновом режиме сервисы
+
+
+
+
+Docker Hub — основные команды
+Рассмотрим пример создания образа и загрузку его на docker hub (cloud.docker.com)
+
+$ docker run -it —name testapp —hostname testapp ubuntu bash — запустим  контейнер с убунту и назовем его testapp
+
+$ apt update — обновим индексе в контейнере
+
+$ apt install cowsay — ставим приложение
+
+$ ln -s /usr/games/cowsay /usr/bin/cowsay — создадим символьную ссылку, что при запуске контейнера не указывать путь к приложению
+
+$ exit — выходим из контейнера
+
+$ docker commit testapp userhub/testappimage — создаем образ. testapp — имя которое мы указывали при запуске контейнера(выше).  userhub — имя вашего пользователя на docker hub. testappimage — название вашего нового образа на docker hub.
+
+$ docker run userhub/testappimage cowsay “TEST” — проверим работу нашего образа
+
+$ docker login — авторизуемся на docker hub.
+
+$ docker push userhub/testappimage — отправляем наш образ в репозиторий docker hub
+
+
+
+Другие команды
+$ sudo service docker restart — перезапускам сервис докер.
+
+$ docker -v — версия docker
+
+$ docker-compose -v — версия docker-compose
+
+
+
+Как сделать запуск docker из под текущего пользователя(без sudo)
+$ sudo usermod -a -G docker YouLogin — добавляем вашего пользователя в группу docker
+
+$ sudo service docker restart — перезапускам сервис докер.
+
+если не помогло, перезагрузите компьютер.
