@@ -22,7 +22,7 @@ services:
       links:
         - mysql
   mysql:
-    image: mysql:5.7.25
+    image: mysql:5.7
     ports:
       - 33061:3306
     environment:
