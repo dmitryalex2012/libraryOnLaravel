@@ -14,6 +14,7 @@
 2. Создать файл "Docker-compose.yml". В дан. файле прописать версию "Docker-compose", сети, сервисы.
 
 3. Создать и наполнить директиву "docker" (согласно https://www.youtube.com/watch?v=2wGEirrpWsU).
+    В файле .env д. б. "DB_HOST=localhost"!
 
 4. Сборка и запуск контейнеров.
     4.1 Собрать контейнері (# docker-compose build).
