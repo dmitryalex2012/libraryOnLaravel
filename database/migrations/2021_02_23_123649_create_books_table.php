@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
             $table->string('description');
             $table->string('bookCover');
             $table->string('category');
-            $table->string('availability');
+            $table->string('language');
             $table->timestamps();
         });
     }
