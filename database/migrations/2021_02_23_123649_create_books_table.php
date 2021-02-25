@@ -21,6 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('bookCover');
             $table->string('category');
             $table->string('language');
+            $table->integer('publishingYear');
             $table->timestamps();
         });
     }

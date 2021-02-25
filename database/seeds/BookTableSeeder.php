@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class BookTableSeeder extends Seeder
 {
@@ -12,13 +11,6 @@ class BookTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('books')->insert([
-            'title' => str_random(10),
-            'author' => str_random(10),
-            'description' => str_random(10),
-            'bookCover' => str_random(10),
-            'category' => str_random(10),
-            'language' => str_random(10),
-        ]);
+        factory(App\Book::class, 15)->create();
     }
 }

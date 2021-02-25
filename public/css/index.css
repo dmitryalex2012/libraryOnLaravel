@@ -21,8 +21,26 @@ body {
     height: 60px;
 }
 
-.nav-link{
-    /*color: #5b4443!important;*/
+.h1IndexPage{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.indexTable{
+    width: 100%;
+    text-align: center;
+}
+
+td{
+    border: 1px solid black;
+}
+
+.firstTd{
+    width: 20%;
+}
+
+.secondTd{
+    width: 80%;
 }
 
 .hiderButtons{
