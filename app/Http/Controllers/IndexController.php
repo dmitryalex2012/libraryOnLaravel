@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\app\Models\Books;
+use App\app\Services\BooksServices;
 
 class IndexController extends Controller
 {
@@ -16,6 +17,7 @@ class IndexController extends Controller
     public function index()
     {
         $books = $this->model->getBooks();
+        $books = BooksServices::makeBookList($books);
 
         return view('index/index', ['books' => $books]);
     }

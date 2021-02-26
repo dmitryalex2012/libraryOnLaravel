@@ -21,17 +21,40 @@ body {
     height: 60px;
 }
 
+.container{
+    max-width: 100%;
+    /*margin-bottom: 20px;*/
+}
+
 .h1IndexPage{
     text-align: center;
     margin: 20px 0;
 }
 
+.h3Index{
+    text-align: center;
+    margin-top: 30px;
+    font-size: larger;
+}
+
+.h6DescriptionIndex{
+    text-align: justify;
+    font-size: smaller;
+    margin: 5px;
+}
+
 .indexTable{
-    width: 100%;
+    table-layout: fixed;
+    width:100%;
     text-align: center;
 }
 
-td{
+td {
+    border: 1px solid black;
+    word-wrap:break-word;
+}
+
+th{
     border: 1px solid black;
 }
 
@@ -40,8 +63,19 @@ td{
 }
 
 .secondTd{
-    width: 80%;
+    width: 70%;
 }
+
+.thirdTd{
+    width: 10%;
+}
+
+.pImageIndex{
+    font-size: smaller;
+    margin: auto;
+    overflow-wrap: break-word;
+}
+
 
 .hiderButtons{
     margin: auto;
@@ -50,6 +84,10 @@ td{
 .cardImages{
     text-align: center;
     padding: 10px;
+}
+
+.paginationIndex{
+    margin: 20px 0;
 }
 
 .footer{

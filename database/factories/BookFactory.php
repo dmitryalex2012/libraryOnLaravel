@@ -11,7 +11,7 @@ $factory->define(Book::class, function (Faker $faker) {
         'author' => $faker->firstName . $faker->lastName,
         'description' => $faker->realText(rand(100, 150)),
         'bookCover' => $faker->imageUrl($width = 640, $height = 480, 'cats'),
-        'category' => $faker->realText(10),
+        'category' => $faker->word(),
         'language' => $faker->country,
         'publishingYear' => $faker->year('-1 year'),
         'created_at' => $faker->dateTimeBetween('-60 days', '-30 days'),
