@@ -1,5 +1,6 @@
 <?php
 /* @var $books array */
+/* @var $filters string */
 ?>
 
 @extends('layout')
@@ -18,6 +19,40 @@
 
             <div class="col-md-3">
                 <h3 class="h3Index">Filters</h3>
+
+                <?php
+//                if (isset($filters)):
+                ?>
+                <p><?php echo $filters; ?></p>
+                <?php
+//                endif;
+                $filters = "ok";
+                $array = "ok";
+//                $array = ['filter' =>'ok'];
+//                $array = json_encode($array);
+                ?>
+
+                <div class="booksOnPage dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Books on page
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+{{--                        <li><a class="dropdown-item" href={{ action('IndexController@filters', serialize($filter)) }}>10</a></li>--}}
+                        <li><a class="dropdown-item" href={{ action('IndexController@filters', $array) }}>10</a></li>
+                        <li><a class="dropdown-item" href="#">20</a></li>
+                        <li><a class="dropdown-item" href="#">30</a></li>
+                    </ul>
+                </div>
+
+
+                <p>Books on page</p>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected value="1">10</option>
+                    <option value="2">20</option>
+                    <option value="3">30</option>
+                </select>
+
+
             </div>
 
             <div class="col-md-9">
