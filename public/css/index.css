@@ -43,6 +43,18 @@ body {
     margin: 5px;
 }
 
+.formIndex{
+    text-align: center;
+}
+
+.pFiltersIndex{
+    margin-top: 25px;
+}
+
+.buttonIndex{
+    margin-top: 25px;
+}
+
 .indexTable{
     table-layout: fixed;
     width:100%;

@@ -2,52 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\app\Models\Books;
 use App\app\Services\BooksServices;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
+
 
 class IndexController extends Controller
 {
-    protected $model;
+    protected $booksServices;
 
     public function __construct()
     {
-        $this->model = new Books();
+        $this->booksServices = new BooksServices();
     }
 
     public function index()
     {
-        $books = $this->model->getBooks();
-
-        $filters='undefine';
-        if (isset($_GET['filters'])){
-            $filters = $_GET['filters'];
-        }
-
-        $filteredBooks = BooksServices::makeBookList($books);
+                $filters = null;    /** NEED DELETE!!!!!!! */
+        $filteredBooks = $this->booksServices->makeBookList(null);
 
         return view('index/index', [
             'books' => $filteredBooks,
-            'filters' => $filters
+            'filters' => $filters       /** NEED DELETE!!!!!!! */
         ]);
+
     }
 
-    public function filters($array)
+    public function filters(Request $request)
     {
-        $books = $this->model->getBooks();
-
-        if (isset($_GET['filters'])){
-            $filters = $_GET['filters'];
+        $filters = null;
+        if ($request->isMethod('post')){
+            $filters = $request->post();
         }
 
-        $filteredBooks = BooksServices::makeBookList( $books);
+        $filteredBooks = $this->booksServices->makeBookList($filters);
 
-//        $array = json_decode($array);
 
         return view('index/index', [
             'books' => $filteredBooks,
-            'filters' => $array['filter']
+            'filters' => $filters       /** NEED DELETE!!!!!!! */
         ]);
     }
 }

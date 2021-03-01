@@ -1,6 +1,6 @@
 <?php
 /* @var $books array */
-/* @var $filters string */
+/* @var $filters array */
 ?>
 
 @extends('layout')
@@ -9,49 +9,59 @@
 
     <h1 class="h1IndexPage">Books list</h1>
 
-<?php
-//        echo $books[1]['title'];
-?>
+
+<pre>
+    <?php
+        print_r($filters);
+    ?>
+</pre>
+
 
     <div class="container">
 
         <div class="row">
 
             <div class="col-md-3">
+
                 <h3 class="h3Index">Filters</h3>
 
-                <?php
-//                if (isset($filters)):
-                ?>
-                <p><?php echo $filters; ?></p>
-                <?php
-//                endif;
-                $filters = "ok";
-                $array = "ok";
-//                $array = ['filter' =>'ok'];
-//                $array = json_encode($array);
-                ?>
 
-                <div class="booksOnPage dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        Books on page
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-{{--                        <li><a class="dropdown-item" href={{ action('IndexController@filters', serialize($filter)) }}>10</a></li>--}}
-                        <li><a class="dropdown-item" href={{ action('IndexController@filters', $array) }}>10</a></li>
-                        <li><a class="dropdown-item" href="#">20</a></li>
-                        <li><a class="dropdown-item" href="#">30</a></li>
-                    </ul>
-                </div>
+                <form action="/index/filters/" class="formIndex" method="POST">
 
+                    {{ csrf_field() }}
+{{--                    @csrf--}}
+{{--                    @method('PUT')--}}
 
-                <p>Books on page</p>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected value="1">10</option>
-                    <option value="2">20</option>
-                    <option value="3">30</option>
-                </select>
+                    <p class="pFiltersIndex">Books on page:</p>
+                    <select class="form-select" aria-label="Default select example" name="booksOnPage">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                    </select>
 
+                    <p class="pFiltersIndex">Sorting by:</p>
+                    <select class="form-select" aria-label="Default select example" name="sorting">
+                        <option value="none">none</option>
+                        <option value="publishingYearUp">publishingYearUp</option>
+                        <option value="author">author</option>
+                    </select>
+
+                    <p class="pFiltersIndex">Displaying books:</p>
+                    <select class="form-select" aria-label="Default select example" name="displayingByYear">
+                        <option value="all">all</option>
+                        <option value="before1960">before1960</option>
+                        <option value="after1960">after</option>
+                    </select>
+
+                    <p class="pFiltersIndex">Find by author or title:</p>
+                    <label>
+                        <input type="text" name="text">
+                    </label>
+                    <br>
+
+                    <input class="buttonIndex" type="submit">
+
+                </form>
 
             </div>
 
@@ -102,11 +112,5 @@
         </nav>
 
     </div>
-
-{{--    <pre>--}}
-{{--    <?php--}}
-{{--        var_dump($books);--}}
-{{--    ?>--}}
-{{--    </pre>--}}
 
 @endsection
