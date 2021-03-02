@@ -23,4 +23,6 @@ Route::get('index/index', 'IndexController@index');
 
 Route::post('index/filters', 'IndexController@filters');
 
+Route::post('/filter','IndexController@filters')->name('filter');
+
 //Route::get('index/result', 'IndexController@filters');

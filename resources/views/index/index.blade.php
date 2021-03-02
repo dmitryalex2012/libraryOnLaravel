@@ -26,7 +26,15 @@
                 <h3 class="h3Index">Filters</h3>
 
 
-                <form action="/index/filters/" class="formIndex" method="POST">
+{{--                <form action="{{route('sender')}}" method="post">--}}
+{{--                    {{csrf_field()}}--}}
+{{--                    <input type="text" name="text">--}}
+{{--                    <input type="submit">--}}
+{{--                </form>--}}
+
+
+{{--                <form action="/index/filters/" class="formIndex" method="post">--}}
+                <form action="{{route('filter')}}" method="post">
 
                     {{ csrf_field() }}
 {{--                    @csrf--}}
