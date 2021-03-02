@@ -9,11 +9,8 @@
 
     <h1 class="h1IndexPage">Books list</h1>
 
-
 <pre>
-    <?php
-        print_r($filters);
-    ?>
+        {{print_r($filters)}};
 </pre>
 
 
@@ -25,20 +22,9 @@
 
                 <h3 class="h3Index">Filters</h3>
 
-
-{{--                <form action="{{route('sender')}}" method="post">--}}
-{{--                    {{csrf_field()}}--}}
-{{--                    <input type="text" name="text">--}}
-{{--                    <input type="submit">--}}
-{{--                </form>--}}
-
-
-{{--                <form action="/index/filters/" class="formIndex" method="post">--}}
                 <form action="{{route('filter')}}" method="post">
 
                     {{ csrf_field() }}
-{{--                    @csrf--}}
-{{--                    @method('PUT')--}}
 
                     <p class="pFiltersIndex">Books on page:</p>
                     <select class="form-select" aria-label="Default select example" name="booksOnPage">
@@ -51,6 +37,7 @@
                     <select class="form-select" aria-label="Default select example" name="sorting">
                         <option value="none">none</option>
                         <option value="publishingYearUp">publishingYearUp</option>
+                        <option value="publishingYearUp">publishingYearDown</option>
                         <option value="author">author</option>
                     </select>
 
@@ -58,7 +45,7 @@
                     <select class="form-select" aria-label="Default select example" name="displayingByYear">
                         <option value="all">all</option>
                         <option value="before1960">before1960</option>
-                        <option value="after1960">after</option>
+                        <option value="after1960">after1960</option>
                     </select>
 
                     <p class="pFiltersIndex">Find by author or title:</p>

@@ -42,21 +42,4 @@ class IndexController extends Controller
             'filters' => $filters       /** NEED DELETE!!!!!!! */
         ]);
     }
-
-    public function notificationSender(Request $request)
-    {
-        $filters = null;
-        if ($request->isMethod('post')){
-            $filters = $request->post();
-        }
-
-        $filteredBooks = $this->booksServices->makeBookList($filters);
-
-
-        return view('index/index', [
-            'books' => $filteredBooks,
-            'filters' => $filters       /** NEED DELETE!!!!!!! */
-        ]);
-    }
-
 }
