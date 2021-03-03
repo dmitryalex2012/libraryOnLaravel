@@ -15,31 +15,36 @@ class IndexController extends Controller
         $this->booksServices = new BooksServices();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-                $filters = null;    /** NEED DELETE!!!!!!! */
-        $filteredBooks = $this->booksServices->makeBookList(null);
+        $filteredBooks = $this->booksServices->makeBookList(null, null);
+
+        return view('index/index', [
+            'books' => $filteredBooks
+        ]);
+    }
+
+    public function filters(Request $request)
+    {
+        $filters = $request->post();
+
+        $filteredBooks = $this->booksServices->makeBookList($filters, null);
 
         return view('index/index', [
             'books' => $filteredBooks,
             'filters' => $filters       /** NEED DELETE!!!!!!! */
         ]);
-
     }
 
-    public function filters(Request $request)
+    public function pageNumberChange(Request $request)
     {
-        $filters = null;
-        if ($request->isMethod('post')){
-            $filters = $request->post();
-        }
+        $pageNumber = $request->post();
 
-        $filteredBooks = $this->booksServices->makeBookList($filters);
-
+        $filteredBooks = $this->booksServices->makeBookList(null, $pageNumber);
 
         return view('index/index', [
             'books' => $filteredBooks,
-            'filters' => $filters       /** NEED DELETE!!!!!!! */
+            'filters' => null       /** NEED DELETE!!!!!!! */
         ]);
     }
 }

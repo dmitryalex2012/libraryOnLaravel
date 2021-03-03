@@ -10,7 +10,12 @@
     <h1 class="h1IndexPage">Books list</h1>
 
 <pre>
-        {{print_r($filters)}};
+    <?php
+    if (isset($filters)){
+        print_r($filters);
+    }
+    ?>
+{{--        {{print_r($filters)}};--}}
 </pre>
 
 
@@ -23,34 +28,34 @@
                 <h3 class="h3Index">Filters</h3>
 
                 <form action="{{route('filter')}}" method="post">
+{{--                <form action="{{route('index')}}" method="post">--}}
 
                     {{ csrf_field() }}
-
-                    <p class="pFiltersIndex">Books on page:</p>
-                    <select class="form-select" aria-label="Default select example" name="booksOnPage">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                    </select>
 
                     <p class="pFiltersIndex">Sorting by:</p>
                     <select class="form-select" aria-label="Default select example" name="sorting">
                         <option value="none">none</option>
-                        <option value="publishingYearUp">publishingYearUp</option>
-                        <option value="publishingYearUp">publishingYearDown</option>
-                        <option value="author">author</option>
+                        <option value="publishingYearUp">publishing year up</option>
+                        <option value="publishingYearUp">publishing year down</option>
                     </select>
 
                     <p class="pFiltersIndex">Displaying books:</p>
-                    <select class="form-select" aria-label="Default select example" name="displayingByYear">
+                    <select class="form-select" aria-label="Default select example" name="filtering">
                         <option value="all">all</option>
-                        <option value="before1960">before1960</option>
-                        <option value="after1960">after1960</option>
+                        <option value="before1960">before 1960</option>
+                        <option value="after1960">after 1960</option>
                     </select>
+
+{{--                    <p class="pFiltersIndex">Books on page:</p>--}}
+{{--                    <select class="form-select" aria-label="Default select example" name="booksOnPage">--}}
+{{--                        <option value="5">5</option>--}}
+{{--                        <option value="10">10</option>--}}
+{{--                        <option value="20">20</option>--}}
+{{--                    </select>--}}
 
                     <p class="pFiltersIndex">Find by author or title:</p>
                     <label>
-                        <input type="text" name="text">
+                        <input type="text" name="findText">
                     </label>
                     <br>
 

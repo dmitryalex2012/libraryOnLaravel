@@ -7,20 +7,33 @@ use App\app\Models\Books;
 
 class BooksServices
 {
-    protected $model;
-
-    public function __construct()
+    /**
+     * Makes books list using filters.
+     *
+     * @param $filters
+     * @return array|mixed
+     */
+    public function makeBookList($filters, $pageNumber)
     {
-        $this->model = new Books();
-    }
+        $books = Books::getBooks();
 
-    public function makeBookList($filters)
-    {
-//        if ($filters->isMethod('get')){
-//            $filters = $filters['text'];
-//        }
+        if (isset($filters)){
+            SessionServices::filtersToSession($filters);        // when "filters" changed
+        } else{
+            $filters = SessionServices::filtersFromSession();   // when page number changed
+        }
 
-        $books = $this->model->getBooks();
+        /** Find book by author or title. */
+        if (isset($filters['findText'])){
+
+            //
+
+            return $books;
+        }
+
+        $books = BooksFilteringServices::sorting($books, $filters['sorting']);
+
+        $books = BooksFilteringServices::filtering($books, $filters['filtering']);
 
         return $books;
     }

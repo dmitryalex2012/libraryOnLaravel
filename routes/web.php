@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index');
 Route::get('index/index', 'IndexController@index');
-
 Route::post('/filter','IndexController@filters')->name('filter');
+
+//Route::post('/', 'IndexController@index');
+//Route::post('/index', 'IndexController@index')->name('index');
+//Route::post('/index', 'IndexController@index')->name('index');
+
+
 
