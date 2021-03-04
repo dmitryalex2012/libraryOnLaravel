@@ -11,6 +11,7 @@ class BooksServices
      * Makes books list using filters.
      *
      * @param $filters
+     * @param $pageNumber
      * @return array|mixed
      */
     public function makeBookList($filters, $pageNumber)
@@ -18,9 +19,17 @@ class BooksServices
         $books = Books::getBooks();
 
         if (isset($filters)){
+
             SessionServices::filtersToSession($filters);        // when "filters" changed
-        } else{
+
+        } elseif (isset($pageNumber)){
+
             $filters = SessionServices::filtersFromSession();   // when page number changed
+
+        } else{
+
+            $filters = SessionServices::loadInitialData();      // for "index" page load
+
         }
 
         /** Find book by author or title. */

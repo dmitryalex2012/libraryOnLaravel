@@ -46,4 +46,16 @@ class SessionServices
         return $filters;
     }
 
+    public static function loadInitialData()
+    {
+        $filters['sorting'] = 'none';
+        $filters['filtering'] = 'all';
+
+        session(['sorting' => $filters['sorting']]);
+        session(['filtering' => $filters['filtering']]);
+        session(['pageNumber' => 1]);
+
+        return $filters;
+    }
+
 }

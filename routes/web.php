@@ -21,6 +21,8 @@ Route::get('/', 'IndexController@index');
 Route::get('index/index', 'IndexController@index');
 Route::post('/filter','IndexController@filters')->name('filter');
 
+Route::get('/page/{pageNumber}','IndexController@pageNumber')->name('pageNumber');
+
 //Route::post('/', 'IndexController@index');
 //Route::post('/index', 'IndexController@index')->name('index');
 //Route::post('/index', 'IndexController@index')->name('index');

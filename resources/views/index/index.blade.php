@@ -102,14 +102,21 @@
         </div>
 
         <?php $i =1; ?>
+{{--        <form action="{{route('filter')}}" method="post">--}}
 
-        <nav class="paginationIndex" aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#"><?php echo $i++; ?></a></li>
-                <li class="page-item"><a class="page-link" href="#"><?php echo $i++; ?></a></li>
-                <li class="page-item"><a class="page-link" href="#"><?php echo $i++; ?></a></li>
-            </ul>
-        </nav>
+{{--        pageNumber=1--}}
+
+            <nav class="paginationIndex" aria-label="Page navigation example" >
+                <ul class="pagination justify-content-center">
+                    <?php for ($i=1; $i < 4; $i++): ?>
+{{--                    <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['page' => 5])}}"><?php echo $i++; ?></a></li>--}}
+                    <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['pageNumber' => $i])}}"><?php echo $i; ?></a></li>
+{{--                    <li class="page-item"><a class="page-link" href="#"><?php echo $i++; ?></a></li>--}}
+{{--                    <li class="page-item"><a class="page-link" href="#"><?php echo $i++; ?></a></li>--}}
+                    <?php endfor; ?>
+                </ul>
+            </nav>
+{{--        </form>>--}}
 
     </div>
 
