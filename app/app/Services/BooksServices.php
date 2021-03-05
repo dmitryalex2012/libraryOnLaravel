@@ -7,6 +7,13 @@ use App\app\Models\Books;
 
 class BooksServices
 {
+    public $filteringServices;
+
+    public function __construct()
+    {
+        $this->filteringServices = new BooksFilteringServices();
+    }
+
     /**
      * Makes books list using filters.
      *
@@ -24,6 +31,8 @@ class BooksServices
 
         } elseif (isset($pageNumber)){
 
+            SessionServices::pageNumberToSession($pageNumber);
+
             $filters = SessionServices::filtersFromSession();   // when page number changed
 
         } else{
@@ -40,9 +49,9 @@ class BooksServices
             return $books;
         }
 
-        $books = BooksFilteringServices::sorting($books, $filters['sorting']);
+        $books = $this->filteringServices->sorting($books, $filters['sorting']);
 
-        $books = BooksFilteringServices::filtering($books, $filters['filtering']);
+        $books = $this->filteringServices->filtering($books, $filters['filtering']);
 
         return $books;
     }

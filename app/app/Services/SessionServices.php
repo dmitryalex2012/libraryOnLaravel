@@ -37,6 +37,13 @@ class SessionServices
         return;
     }
 
+    public static function pageNumberToSession($pageNumber)
+    {
+        session(['pageNumber' => $pageNumber]);
+
+        return;
+    }
+
     public static function filtersFromSession()
     {
             $filters ['sorting'] = session('sorting');
@@ -50,6 +57,7 @@ class SessionServices
     {
         $filters['sorting'] = 'none';
         $filters['filtering'] = 'all';
+        $filters ['pageNumber'] = 1;
 
         session(['sorting' => $filters['sorting']]);
         session(['filtering' => $filters['filtering']]);

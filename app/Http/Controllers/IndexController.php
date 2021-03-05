@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\app\Services\BooksServices;
+use App\app\Services\SessionServices;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -26,13 +27,17 @@ class IndexController extends Controller
     {
         $filteredBooks = $this->booksServices->makeBookList(null, null);
 
+        $filters = SessionServices::filtersFromSession();
+
         return view('index/index', [
-            'books' => $filteredBooks
+            'books' => $filteredBooks,
+            'filters' => $filters
         ]);
     }
 
     /**
-     * Loads books from DB. Performs it filtering according to user filters (accepts with POST method).
+     * Loads books from DB.
+     * Performs it filtering according to user filters (accepts with POST method).
      *
      * @param Request $request
      * @return Factory|View
@@ -43,26 +48,31 @@ class IndexController extends Controller
 
         $filteredBooks = $this->booksServices->makeBookList($requestPost, null);
 
+        $filters = SessionServices::filtersFromSession();
+
         return view('index/index', [
             'books' => $filteredBooks,
-            'filters' => $requestPost       /** NEED DELETE!!!!!!! */
+            'filters' => $filters
         ]);
     }
 
 
     /**
-     * Loads books from DB. Outputs to view list books from selected page (accepts page number with GET method).
+     * Loads books from DB.
+     * Rendering view with list books from SELECTED page (accepts page number with GET method).
      *
      * @param $pageNumber
      * @return Factory|View
      */
-    public function pageNumber($pageNumber)
+    public function pagination($pageNumber)
     {
         $filteredBooks = $this->booksServices->makeBookList(null, $pageNumber);
 
+        $filters = SessionServices::filtersFromSession();
+
         return view('index/index', [
             'books' => $filteredBooks,
-            'filters' => $pageNumber       /** NEED DELETE!!!!!!! */
+            'filters' => $filters
         ]);
     }
 

@@ -7,15 +7,20 @@
 
 @section('content')
 
+    <?php
+        $booksPagesQuantity = ceil( count($books) / 10);
+    ?>
+
     <h1 class="h1IndexPage">Books list</h1>
 
 <pre>
     <?php
-    if (isset($filters)){
-        print_r($filters);
-    }
+//    if (isset($filters)){
+//        print_r($filters);
+//    }
+
+//    echo ceil( count($books) / 10 );
     ?>
-{{--        {{print_r($filters)}};--}}
 </pre>
 
 
@@ -25,33 +30,26 @@
 
             <div class="col-md-3">
 
+                {{-- "Filters" section --}}
                 <h3 class="h3Index">Filters</h3>
 
                 <form action="{{route('filter')}}" method="post">
-{{--                <form action="{{route('index')}}" method="post">--}}
 
                     {{ csrf_field() }}
 
                     <p class="pFiltersIndex">Sorting by:</p>
                     <select class="form-select" aria-label="Default select example" name="sorting">
-                        <option value="none">none</option>
-                        <option value="publishingYearUp">publishing year up</option>
-                        <option value="publishingYearUp">publishing year down</option>
+                        <option value="none" <?php if ($filters['sorting'] === 'none') echo "selected"; ?>>none</option>
+                        <option value="newBooksFirst" <?php if ($filters['sorting'] === 'newBooksFirst') echo "selected"; ?>>new books first</option>
+                        <option value="oldBooksFirst" <?php if ($filters['sorting'] === 'oldBooksFirst') echo "selected"; ?>>old books first</option>
                     </select>
 
                     <p class="pFiltersIndex">Displaying books:</p>
                     <select class="form-select" aria-label="Default select example" name="filtering">
-                        <option value="all">all</option>
-                        <option value="before1960">before 1960</option>
-                        <option value="after1960">after 1960</option>
+                        <option value="all" <?php if ($filters['filtering'] === 'all') echo "selected"; ?>>all</option>
+                        <option value="before1960" <?php if ($filters['filtering'] === 'before1960') echo "selected"; ?>>published before 1960</option>
+                        <option value="after1960" <?php if ($filters['filtering'] === 'after1960') echo "selected"; ?>>published after 1960</option>
                     </select>
-
-{{--                    <p class="pFiltersIndex">Books on page:</p>--}}
-{{--                    <select class="form-select" aria-label="Default select example" name="booksOnPage">--}}
-{{--                        <option value="5">5</option>--}}
-{{--                        <option value="10">10</option>--}}
-{{--                        <option value="20">20</option>--}}
-{{--                    </select>--}}
 
                     <p class="pFiltersIndex">Find by author or title:</p>
                     <label>
@@ -65,6 +63,7 @@
 
             </div>
 
+            {{-- "Books list" section --}}
             <div class="col-md-9">
 
                 <table class="indexTable">
@@ -75,7 +74,12 @@
                         <th class="thirdTd">Category</th>
                     </tr>
 
-                    <?php foreach ($books as $book): ?>
+                    <?php
+
+                    $books = array_slice($books, ($filters ['pageNumber'] - 1) *10, 10);
+
+                    foreach ($books as $book):
+                    ?>
 
                     <tr>
                         <td>
@@ -101,22 +105,14 @@
 
         </div>
 
-        <?php $i =1; ?>
-{{--        <form action="{{route('filter')}}" method="post">--}}
-
-{{--        pageNumber=1--}}
-
-            <nav class="paginationIndex" aria-label="Page navigation example" >
-                <ul class="pagination justify-content-center">
-                    <?php for ($i=1; $i < 4; $i++): ?>
-{{--                    <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['page' => 5])}}"><?php echo $i++; ?></a></li>--}}
-                    <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['pageNumber' => $i])}}"><?php echo $i; ?></a></li>
-{{--                    <li class="page-item"><a class="page-link" href="#"><?php echo $i++; ?></a></li>--}}
-{{--                    <li class="page-item"><a class="page-link" href="#"><?php echo $i++; ?></a></li>--}}
-                    <?php endfor; ?>
-                </ul>
-            </nav>
-{{--        </form>>--}}
+        {{-- "Page numbering" part --}}
+        <nav class="paginationIndex" aria-label="Page navigation example" >
+            <ul class="pagination justify-content-center">
+                <?php for ($i=1; $i <= $booksPagesQuantity; $i++): ?>
+                <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['pageNumber' => $i])}}"><?php echo $i; ?></a></li>
+                <?php endfor; ?>
+            </ul>
+        </nav>
 
     </div>
 
