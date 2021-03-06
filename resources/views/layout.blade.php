@@ -43,7 +43,7 @@
 {{--    <div class="container">--}}
         <div class="row">
             <div class="containerLogo col-sm-7 col-12">
-                <p class="siteDesigner">&copy; Сечин Дмитрий 2020</p>
+                <p class="siteDesigner">&copy; Сечин Дмитрий 2021</p>
             </div>
             <div class="containerRef col-sm-5 col-12">
                 <a href="https://www.facebook.com/manufacture.design/" target="_blank">   <img src='{{ asset('images/facebook1.png') }}' alt=""/></a>

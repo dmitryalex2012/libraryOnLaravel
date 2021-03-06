@@ -30,7 +30,8 @@ class IndexController extends Controller
         $filters = SessionServices::filtersFromSession();
 
         return view('index/index', [
-            'books' => $filteredBooks,
+            'books' => $filteredBooks["books"],
+            'booksPagesQuantity' => $filteredBooks["booksPagesQuantity"],
             'filters' => $filters
         ]);
     }
@@ -51,7 +52,8 @@ class IndexController extends Controller
         $filters = SessionServices::filtersFromSession();
 
         return view('index/index', [
-            'books' => $filteredBooks,
+            'books' => $filteredBooks["books"],
+            'booksPagesQuantity' => $filteredBooks["booksPagesQuantity"],
             'filters' => $filters
         ]);
     }
@@ -71,7 +73,8 @@ class IndexController extends Controller
         $filters = SessionServices::filtersFromSession();
 
         return view('index/index', [
-            'books' => $filteredBooks,
+            'books' => $filteredBooks["books"],
+            'booksPagesQuantity' => $filteredBooks["booksPagesQuantity"],
             'filters' => $filters
         ]);
     }

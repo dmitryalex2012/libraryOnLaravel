@@ -28,6 +28,7 @@ class BooksServices
         if (isset($filters)){
 
             SessionServices::filtersToSession($filters);        // when "filters" changed
+            $filters ['pageNumber'] = 1;
 
         } elseif (isset($pageNumber)){
 
@@ -53,7 +54,12 @@ class BooksServices
 
         $books = $this->filteringServices->filtering($books, $filters['filtering']);
 
-        return $books;
+        $booksPagesQuantity = ceil( count($books) / 10);
+        $books = array_slice($books, ($filters ['pageNumber'] - 1) *10, 10);
+
+        return ["books" => $books,
+                "booksPagesQuantity" => $booksPagesQuantity
+        ];
     }
 
 }

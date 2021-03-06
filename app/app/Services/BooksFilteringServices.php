@@ -21,7 +21,14 @@ class BooksFilteringServices
     public function filtering($books, $filteringParameter)
     {
 
-        //
+        switch ($filteringParameter){
+            case "before1980":
+                $books = $this->publishedBefore($books);
+                break;
+            case "after1980":
+                $books = $this->publishedAfter($books);
+                break;
+        }
 
         return $books;
     }
@@ -46,5 +53,21 @@ class BooksFilteringServices
         });
 
         return $books;
+    }
+
+    public function publishedBefore($books)
+    {
+        $filteredBooks = array_filter($books, function($k) {
+            return $k['publishingYear'] <= 1979;
+        });
+        return $filteredBooks;
+    }
+
+    public function publishedAfter($books)
+    {
+        $filteredBooks = array_filter($books, function($k) {
+            return $k['publishingYear'] > 1979;
+        });
+        return $filteredBooks;
     }
 }

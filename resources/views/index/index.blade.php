@@ -1,5 +1,6 @@
 <?php
 /* @var $books array */
+/* @var $booksPagesQuantity int */
 /* @var $filters array */
 ?>
 
@@ -8,21 +9,29 @@
 @section('content')
 
     <?php
-        $booksPagesQuantity = ceil( count($books) / 10);
+//        $booksPagesQuantity = ceil( count($books) / 10);
     ?>
 
     <h1 class="h1IndexPage">Books list</h1>
 
-<pre>
+{{--<pre>--}}
     <?php
 //    if (isset($filters)){
 //        print_r($filters);
 //    }
 
+//    echo $booksPagesQuantity;
 //    echo ceil( count($books) / 10 );
     ?>
-</pre>
+{{--</pre>--}}
 
+{{--<pre>--}}
+    <?php
+//        if (isset($books)){
+//            print_r($books);
+//        }
+        ?>
+{{--</pre>--}}
 
     <div class="container">
 
@@ -47,8 +56,8 @@
                     <p class="pFiltersIndex">Displaying books:</p>
                     <select class="form-select" aria-label="Default select example" name="filtering">
                         <option value="all" <?php if ($filters['filtering'] === 'all') echo "selected"; ?>>all</option>
-                        <option value="before1960" <?php if ($filters['filtering'] === 'before1960') echo "selected"; ?>>published before 1960</option>
-                        <option value="after1960" <?php if ($filters['filtering'] === 'after1960') echo "selected"; ?>>published after 1960</option>
+                        <option value="before1980" <?php if ($filters['filtering'] === 'before1980') echo "selected"; ?>>published before 1980</option>
+                        <option value="after1980" <?php if ($filters['filtering'] === 'after1980') echo "selected"; ?>>published after 1980</option>
                     </select>
 
                     <p class="pFiltersIndex">Find by author or title:</p>
@@ -75,9 +84,6 @@
                     </tr>
 
                     <?php
-
-                    $books = array_slice($books, ($filters ['pageNumber'] - 1) *10, 10);
-
                     foreach ($books as $book):
                     ?>
 
