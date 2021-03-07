@@ -4,6 +4,18 @@ namespace App\app\Services;
 
 class BooksFilteringServices
 {
+    public function findBook($books, $searchParameter)
+    {
+        $finedBooks = [];
+        foreach ($books as $book){
+            if (($book['author'] === $searchParameter) || ($book['title'] === $searchParameter)){
+                $finedBooks = $book;
+            }
+        }
+
+        return $finedBooks;
+    }
+
     public function sorting($books, $sortingParameter)
     {
         switch ($sortingParameter){

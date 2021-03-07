@@ -103,7 +103,9 @@
                         </td>
                     </tr>
 
-                    <?php endforeach; ?>
+                    <?php
+                    endforeach;
+                    ?>
 
                 </table>
 

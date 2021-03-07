@@ -56,6 +56,17 @@ class IndexController extends Controller
             'booksPagesQuantity' => $filteredBooks["booksPagesQuantity"],
             'filters' => $filters
         ]);
+
+//        $filteredBooks = $requestPost['findText'];
+//
+//        $filters = SessionServices::filtersFromSession();
+//
+//        return view('index/index', [
+//            'books' => $filteredBooks,
+//            'booksPagesQuantity' => 1,
+//            'filters' => $filters
+//        ]);
+
     }
 
 
