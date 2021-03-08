@@ -4,6 +4,13 @@ namespace App\app\Services;
 
 class BooksFilteringServices
 {
+    /**
+     * Gets books from DB by author name or book title.
+     *
+     * @param $books
+     * @param $searchParameter
+     * @return array|mixed
+     */
     public function findBook($books, $searchParameter)
     {
         $finedBooks = [];
@@ -16,6 +23,13 @@ class BooksFilteringServices
         return $finedBooks;
     }
 
+    /**
+     * Sorts the list of books: new or old books first.
+     *
+     * @param $books
+     * @param $sortingParameter
+     * @return mixed
+     */
     public function sorting($books, $sortingParameter)
     {
         switch ($sortingParameter){
@@ -30,6 +44,13 @@ class BooksFilteringServices
         return $books;
     }
 
+    /**
+     * Filters the list of books: displays books published before or after 1960 year.
+     *
+     * @param $books
+     * @param $filteringParameter
+     * @return array
+     */
     public function filtering($books, $filteringParameter)
     {
 
@@ -45,6 +66,12 @@ class BooksFilteringServices
         return $books;
     }
 
+    /**
+     * Performs sorting in this order: new books first.
+     *
+     * @param $books
+     * @return mixed
+     */
     public function newBooksFirst($books)
     {
         usort($books, function($a, $b) {
@@ -56,6 +83,12 @@ class BooksFilteringServices
         return $books;
     }
 
+    /**
+     * Performs sorting in this order: old books first.
+     *
+     * @param $books
+     * @return mixed
+     */
     public function oldBooksFirst($books)
     {
         usort($books, function($a, $b) {
@@ -67,6 +100,12 @@ class BooksFilteringServices
         return $books;
     }
 
+    /**
+     * Gets from the list of books only books published before 1979.
+     *
+     * @param $books
+     * @return array
+     */
     public function publishedBefore($books)
     {
         $filteredBooks = array_filter($books, function($k) {
@@ -75,6 +114,12 @@ class BooksFilteringServices
         return $filteredBooks;
     }
 
+    /**
+     *  Gets from the list of books only books published after 1980.
+     *
+     * @param $books
+     * @return array
+     */
     public function publishedAfter($books)
     {
         $filteredBooks = array_filter($books, function($k) {

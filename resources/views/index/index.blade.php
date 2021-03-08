@@ -8,30 +8,19 @@
 
 @section('content')
 
-    <?php
-//        $booksPagesQuantity = ceil( count($books) / 10);
-    ?>
-
     <h1 class="h1IndexPage">Books list</h1>
 
-{{--<pre>--}}
     <?php
-//    if (isset($filters)){
-//        print_r($filters);
-//    }
-
-//    echo $booksPagesQuantity;
-//    echo ceil( count($books) / 10 );
-    ?>
-{{--</pre>--}}
-
-{{--<pre>--}}
-    <?php
+//        echo '<pre>';
 //        if (isset($books)){
 //            print_r($books);
 //        }
+
+    //    if (isset($filters)){
+    //        print_r($filters);
+    //    }
+    //        echo '</pre>';
         ?>
-{{--</pre>--}}
 
     <div class="container">
 

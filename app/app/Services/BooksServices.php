@@ -15,7 +15,7 @@ class BooksServices
     }
 
     /**
-     * Makes books list using filters.
+     * Makes books list using filters and pagination.
      *
      * @param $filters
      * @param $pageNumber
@@ -25,9 +25,9 @@ class BooksServices
     {
         $books = Books::getBooks();
 
-        /** Find book by author or title. */
         if (isset($filters['findText'])) {
 
+            /** Find book by author or title. */
              $book = $this->filteringServices->findBook($books, $filters['findText']);
 
             return (["books" => array($book),
@@ -47,7 +47,7 @@ class BooksServices
 
         } else{
 
-                $filters = SessionServices::loadInitialData();      // for "index" page load
+                $filters = SessionServices::loadInitialData();      // get $filters from SESSION for "index" page
 
         }
 

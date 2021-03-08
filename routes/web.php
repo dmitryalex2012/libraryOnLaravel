@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index');
 Route::get('index/index', 'IndexController@index');
-Route::post('/filter','IndexController@filters')->name('filter');
 
+Route::post('/filter','IndexController@filters')->name('filter');
 Route::get('/page/{pageNumber}','IndexController@pagination')->name('pageNumber');
 
 

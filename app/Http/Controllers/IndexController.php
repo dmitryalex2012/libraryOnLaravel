@@ -56,23 +56,12 @@ class IndexController extends Controller
             'booksPagesQuantity' => $filteredBooks["booksPagesQuantity"],
             'filters' => $filters
         ]);
-
-//        $filteredBooks = $requestPost['findText'];
-//
-//        $filters = SessionServices::filtersFromSession();
-//
-//        return view('index/index', [
-//            'books' => $filteredBooks,
-//            'booksPagesQuantity' => 1,
-//            'filters' => $filters
-//        ]);
-
     }
 
 
     /**
      * Loads books from DB.
-     * Rendering view with list books from SELECTED page (accepts page number with GET method).
+     * Rendering view with books list from SELECTED page (accepts page number with GET method).
      *
      * @param $pageNumber
      * @return Factory|View
