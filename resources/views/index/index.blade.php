@@ -72,29 +72,26 @@
                         <th class="thirdTd">Category</th>
                     </tr>
 
-                    <?php
-                    foreach ($books as $book):
-                    ?>
+                    @foreach ($books as $book)
 
                     <tr>
                         <td>
-                            <p class="pImageIndex"><?php echo $book['bookCover']; ?></p>
+                            <p class="pImageIndex">{{$book['bookCover']}}</p>
                         </td>
                         <td>
                             <h5><?php echo '"' . $book['title'] . '"'; ?></h5>
+                            <h5>{{$book['title']}}</h5>
                             <h6><?php echo "Author: " . $book['author']; ?></h6>
                             <h6><?php echo "Language: " . $book['language']; ?></h6>
                             <h6 class="h6DescriptionIndex"><?php echo "Description: " . $book['description']; ?></h6>
-                            <h6><?php echo "Publishing year: " . $book['publishingYear']; ?></h6>
+                            <h6><?php echo "Publishing year: " . $book['publishing_year']; ?></h6>
                         </td>
                         <td>
                             <h6><?php echo $book['category']; ?></h6>
                         </td>
                     </tr>
 
-                    <?php
-                    endforeach;
-                    ?>
+                    @endforeach;
 
                 </table>
 

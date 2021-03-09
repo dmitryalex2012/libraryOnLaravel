@@ -76,7 +76,7 @@ class BooksFilteringServices
     {
         usort($books, function($a, $b) {
 
-            return $b['publishingYear'] <=> $a['publishingYear'];
+            return $b['publishing_year'] <=> $a['publishing_year'];
 
         });
 
@@ -93,7 +93,7 @@ class BooksFilteringServices
     {
         usort($books, function($a, $b) {
 
-            return $a['publishingYear'] <=> $b['publishingYear'];
+            return $a['publishing_year'] <=> $b['publishing_year'];
 
         });
 
@@ -109,7 +109,7 @@ class BooksFilteringServices
     public function publishedBefore($books)
     {
         $filteredBooks = array_filter($books, function($k) {
-            return $k['publishingYear'] <= 1979;
+            return $k['publishing_year'] <= 1979;
         });
         return $filteredBooks;
     }
@@ -123,7 +123,7 @@ class BooksFilteringServices
     public function publishedAfter($books)
     {
         $filteredBooks = array_filter($books, function($k) {
-            return $k['publishingYear'] > 1979;
+            return $k['publishing_year'] > 1979;
         });
         return $filteredBooks;
     }
