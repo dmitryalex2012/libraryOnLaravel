@@ -24,6 +24,19 @@
 
     <div class="container">
 
+
+{{--        <table class="table">--}}
+{{--            <thead>--}}
+{{--            <tr>--}}
+{{--                <th scope="col">#</th>--}}
+{{--                <th scope="col">First</th>--}}
+{{--                <th scope="col">Last</th>--}}
+{{--                <th scope="col">Handle</th>--}}
+{{--            </tr>--}}
+{{--            </thead>--}}
+{{--        </table>--}}
+
+
         <div class="row">
 
             <div class="col-md-3">
@@ -37,16 +50,16 @@
 
                     <p class="pFiltersIndex">Sorting by:</p>
                     <select class="form-select" aria-label="Default select example" name="sorting">
-                        <option value="none" <?php if ($filters['sorting'] === 'none') echo "selected"; ?>>none</option>
-                        <option value="newBooksFirst" <?php if ($filters['sorting'] === 'newBooksFirst') echo "selected"; ?>>new books first</option>
-                        <option value="oldBooksFirst" <?php if ($filters['sorting'] === 'oldBooksFirst') echo "selected"; ?>>old books first</option>
+                        <option value="none" @if ($filters['sorting'] === 'none') selected @endif>none</option>
+                        <option value="newBooksFirst" @if ($filters['sorting'] === 'newBooksFirst') selected @endif>new books first</option>
+                        <option value="oldBooksFirst" @if ($filters['sorting'] === 'oldBooksFirst') selected @endif>old books first</option>
                     </select>
 
                     <p class="pFiltersIndex">Displaying books:</p>
                     <select class="form-select" aria-label="Default select example" name="filtering">
-                        <option value="all" <?php if ($filters['filtering'] === 'all') echo "selected"; ?>>all</option>
-                        <option value="before1980" <?php if ($filters['filtering'] === 'before1980') echo "selected"; ?>>published before 1980</option>
-                        <option value="after1980" <?php if ($filters['filtering'] === 'after1980') echo "selected"; ?>>published after 1980</option>
+                        <option value="all" @if ($filters['filtering'] === 'all')  selected @endif>all</option>
+                        <option value="before1980" @if ($filters['filtering'] === 'before1980') selected @endif>published before 1980</option>
+                        <option value="after1980" @if ($filters['filtering'] === 'after1980') selected @endif>published after 1980</option>
                     </select>
 
                     <p class="pFiltersIndex">Find by author or title:</p>
@@ -64,36 +77,77 @@
             {{-- "Books list" section --}}
             <div class="col-md-9">
 
-                <table class="indexTable">
 
-                    <tr>
-                        <th class="firstTd">Book cover</th>
-                        <th class="secondTd">Book description</th>
-                        <th class="thirdTd">Category</th>
-                    </tr>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="firstTd" scope="col">Book cover</th>
+                            <th class="secondTd" scope="col">Book title</th>
+                            <th class="thirdTd" scope="col">Book author</th>
+                            <th class="fourthTd" scope="col">Book description</th>
+                            <th class="fifthTd" scope="col">Book data</th>
+                            <th class="sixthTd" scope="col">Category</th>
+                        </tr>
+                    </thead>
 
                     @foreach ($books as $book)
-
-                    <tr>
-                        <td>
-                            <p class="pImageIndex">{{$book['bookCover']}}</p>
-                        </td>
-                        <td>
-                            <h5><?php echo '"' . $book['title'] . '"'; ?></h5>
-                            <h5>{{$book['title']}}</h5>
-                            <h6><?php echo "Author: " . $book['author']; ?></h6>
-                            <h6><?php echo "Language: " . $book['language']; ?></h6>
-                            <h6 class="h6DescriptionIndex"><?php echo "Description: " . $book['description']; ?></h6>
-                            <h6><?php echo "Publishing year: " . $book['publishing_year']; ?></h6>
-                        </td>
-                        <td>
-                            <h6><?php echo $book['category']; ?></h6>
-                        </td>
-                    </tr>
-
-                    @endforeach;
-
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                <p class="pImageIndex">{{$book['book_cover']}}</p>
+                            </th>
+                            <td>
+                                <h6>"{{$book['title']}}"</h6>
+                            </td>
+                            <td>
+                                <h6>Author: {{$book['author']}}</h6>
+                            </td>
+                            <td>
+                                <h6 class="h6DescriptionIndex">Description: {{$book['description']}}</h6>
+                            </td>
+                            <td>
+                                <h6>Language: {{$book['language']}}</h6>
+                                <h6>Publishing year: {{$book['publishing_year']}}</h6>
+                            </td>
+                            <td>
+                                <h6>{{$book['category']}}</h6>
+                            </td>
+                        </tr>
+                    </tbody>
+                    @endforeach
                 </table>
+
+
+
+{{--                <table class="indexTable">--}}
+
+{{--                    <tr>--}}
+{{--                        <th class="firstTd">Book cover</th>--}}
+{{--                        <th class="secondTd">Book description</th>--}}
+{{--                        <th class="thirdTd">Category</th>--}}
+{{--                    </tr>--}}
+
+{{--                    @foreach ($books as $book)--}}
+
+{{--                    <tr>--}}
+{{--                        <td>--}}
+{{--                            <p class="pImageIndex">{{$book['book_cover']}}</p>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <h5>"{{$book['title']}}"</h5>--}}
+{{--                            <h6>Author: {{$book['author']}}</h6>--}}
+{{--                            <h6>Language: {{$book['language']}}</h6>--}}
+{{--                            <h6 class="h6DescriptionIndex">Description: {{$book['description']}}</h6>--}}
+{{--                            <h6>Publishing year: {{$book['publishing_year']}}</h6>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <h6>{{$book['category']}}</h6>--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
+
+{{--                    @endforeach;--}}
+
+{{--                </table>--}}
 
             </div>
 
@@ -102,9 +156,9 @@
         {{-- "Page numbering" part --}}
         <nav class="paginationIndex" aria-label="Page navigation example" >
             <ul class="pagination justify-content-center">
-                <?php for ($i=1; $i <= $booksPagesQuantity; $i++): ?>
-                <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['pageNumber' => $i])}}"><?php echo $i; ?></a></li>
-                <?php endfor; ?>
+                @for ($i=1; $i <= $booksPagesQuantity; $i++)
+                <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['pageNumber' => $i])}}">{{$i}}</a></li>
+                @endfor
             </ul>
         </nav>
 

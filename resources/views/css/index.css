@@ -60,3 +60,10 @@ img {
     height: auto;
     max-width: 100%;
 }
+
+.firstTd{
+    width: 25% !important;
+}
+.secondTd, .thirdTd, .fourthTd, .fifthTd, .sixthTd{
+    width: 15%!important;
+}

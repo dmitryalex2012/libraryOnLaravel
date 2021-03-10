@@ -72,16 +72,11 @@ th{
     border: 1px solid black;
 }
 
-.firstTd{
+.firstTd, .fourthTd{
     width: 20%;
 }
-
-.secondTd{
-    width: 70%;
-}
-
-.thirdTd{
-    width: 10%;
+.secondTd, .thirdTd, .fifthTd, .sixthTd{
+    width: 15%;
 }
 
 .pImageIndex{
