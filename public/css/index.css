@@ -11,13 +11,6 @@ body {
     margin: 0;
 }
 
-
-/*.content {*/
-/*position: relative;*/
-/*min-height: 100%;*/
-/*}*/
-
-
 .navbar{
     background-color: #cce4ff !important;
     height: 60px;
@@ -51,40 +44,39 @@ body {
 
 .pFiltersIndex{
     margin-top: 25px;
+    text-align: center;
 }
 
 .buttonIndex{
     margin-top: 25px;
 }
 
-.indexTable{
-    table-layout: fixed;
-    width:100%;
+th{
+    vertical-align: middle;
     text-align: center;
 }
 
-td {
-    border: 1px solid black;
-    word-wrap:break-word;
-}
-
-th{
-    border: 1px solid black;
-}
-
-.firstTd, .fourthTd{
-    width: 20%;
-}
-.secondTd, .thirdTd, .fifthTd, .sixthTd{
+.firstTd, .secondTd, .thirdTd, .fifthTd{
     width: 15%;
 }
+
+.fourthTd{
+    width: 30%;
+}
+
+.sixthTd{
+    width: 10%;
+}
+
+/*.secondTd, .fifthTd{*/
+/*    width: 15%;*/
+/*}*/
 
 .pImageIndex{
     font-size: smaller;
     margin: auto;
     overflow-wrap: break-word;
 }
-
 
 .hiderButtons{
     margin: auto;
