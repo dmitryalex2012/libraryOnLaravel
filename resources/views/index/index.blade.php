@@ -89,7 +89,8 @@
                     <tbody>
                         <tr>
                             <th scope="row">
-                                <p class="pImageIndex">{{$book['book_cover']}}</p>
+{{--                                <p class="pImageIndex">{{$book['book_cover']}}</p>--}}
+                                <img src="{{$book['book_cover']}}" alt="">
                             </th>
                             <td>
                                 <h6>"{{$book['title']}}"</h6>
@@ -101,11 +102,11 @@
                                 <h6 class="h6DescriptionIndex">Description: {{$book['description']}}</h6>
                             </td>
                             <td>
-                                <h6>Language: {{$book['language']}}</h6>
-                                <h6>Publishing year: {{$book['publishing_year']}}</h6>
+                                <h6 class="h6Index">Language: {{$book['language']}}</h6>
+                                <h6 class="h6Index">Publishing year: {{$book['publishing_year']}}</h6>
                             </td>
                             <td>
-                                <h6>{{$book['category']}}</h6>
+                                <h6 class="h6Index">{{$book['category']}}</h6>
                             </td>
                         </tr>
                     </tbody>

@@ -38,6 +38,12 @@ body {
     margin: 5px;
 }
 
+.h6Index{
+    text-align: center;
+    font-size: smaller;
+    margin: 5px;
+}
+
 .formIndex{
     text-align: center;
 }
@@ -51,7 +57,7 @@ body {
     margin-top: 25px;
 }
 
-th{
+th, td{
     vertical-align: middle;
     text-align: center;
 }
@@ -68,9 +74,6 @@ th{
     width: 10%;
 }
 
-/*.secondTd, .fifthTd{*/
-/*    width: 15%;*/
-/*}*/
 
 .pImageIndex{
     font-size: smaller;
