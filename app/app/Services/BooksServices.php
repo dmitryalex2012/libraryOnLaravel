@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\app\Services;
 
 use App\app\Models\Books;
@@ -35,32 +34,26 @@ class BooksServices
         }
 
         if (isset($filters)) {
-
-            SessionServices::filtersToSession($filters);        // when "filters" changed
+            /** When "filters" changed */
+            SessionServices::filtersToSession($filters);
             $filters ['pageNumber'] = 1;
-
-        } elseif (isset($pageNumber)){
-
+        } elseif (isset($pageNumber)) {
                 SessionServices::pageNumberToSession($pageNumber);
 
                 $filters = SessionServices::filtersFromSession();   // when page number changed
-
-        } else{
-
+        } else {
                 $filters = SessionServices::loadInitialData();      // get $filters from SESSION for "index" page
-
         }
 
         $books = $this->filteringServices->sorting($books, $filters['sorting']);
 
         $books = $this->filteringServices->filtering($books, $filters['filtering']);
 
-        $booksPagesQuantity = ceil( count($books) / 10);
-        $books = array_slice($books, ($filters ['pageNumber'] - 1) *10, 10);
+        $booksPagesQuantity = ceil(count($books) / 10);
+        $books = array_slice($books, ($filters ['pageNumber'] - 1) * 10, 10);
 
         return ["books" => $books,
                 "booksPagesQuantity" => $booksPagesQuantity
         ];
     }
-
 }

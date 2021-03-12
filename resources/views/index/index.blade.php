@@ -20,7 +20,7 @@
     //        print_r($filters);
     //    }
     //        echo '</pre>';
-        ?>
+    ?>
 
     <div class="container">
 
@@ -38,15 +38,23 @@
                     <p class="pFiltersIndex">Sorting by:</p>
                     <select class="form-select" aria-label="Default select example" name="sorting">
                         <option value="none" @if ($filters['sorting'] === 'none') selected @endif>none</option>
-                        <option value="newBooksFirst" @if ($filters['sorting'] === 'newBooksFirst') selected @endif>new books first</option>
-                        <option value="oldBooksFirst" @if ($filters['sorting'] === 'oldBooksFirst') selected @endif>old books first</option>
+                        <option value="newBooksFirst" @if ($filters['sorting'] === 'newBooksFirst') selected @endif>
+                            new books first
+                        </option>
+                        <option value="oldBooksFirst" @if ($filters['sorting'] === 'oldBooksFirst') selected @endif>
+                            old books first
+                        </option>
                     </select>
 
                     <p class="pFiltersIndex">Displaying books:</p>
                     <select class="form-select" aria-label="Default select example" name="filtering">
                         <option value="all" @if ($filters['filtering'] === 'all')  selected @endif>all</option>
-                        <option value="before1980" @if ($filters['filtering'] === 'before1980') selected @endif>published before 1980</option>
-                        <option value="after1980" @if ($filters['filtering'] === 'after1980') selected @endif>published after 1980</option>
+                        <option value="before1980" @if ($filters['filtering'] === 'before1980') selected @endif>
+                            published before 1980
+                        </option>
+                        <option value="after1980" @if ($filters['filtering'] === 'after1980') selected @endif>
+                            published after 1980
+                        </option>
                     </select>
 
                     <p class="pFiltersIndex">Find by author or title:</p>
@@ -112,7 +120,9 @@
         <nav class="paginationIndex" aria-label="Page navigation example" >
             <ul class="pagination justify-content-center">
                 @for ($i=1; $i <= $booksPagesQuantity; $i++)
-                <li class="page-item"><a class="page-link" href="{{route('pageNumber', ['pageNumber' => $i])}}">{{$i}}</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="{{route('pageNumber', ['pageNumber' => $i])}}">{{$i}}</a>
+                </li>
                 @endfor
             </ul>
         </nav>

@@ -1,6 +1,6 @@
 <?php
-namespace App\app\Services;
 
+namespace App\app\Services;
 
 class BooksFilteringServices
 {
@@ -14,8 +14,8 @@ class BooksFilteringServices
     public function findBook($books, $searchParameter)
     {
         $finedBooks = [];
-        foreach ($books as $book){
-            if (($book['author'] === $searchParameter) || ($book['title'] === $searchParameter)){
+        foreach ($books as $book) {
+            if (($book['author'] === $searchParameter) || ($book['title'] === $searchParameter)) {
                 $finedBooks = $book;
             }
         }
@@ -32,7 +32,7 @@ class BooksFilteringServices
      */
     public function sorting($books, $sortingParameter)
     {
-        switch ($sortingParameter){
+        switch ($sortingParameter) {
             case "newBooksFirst":
                 $books = $this->newBooksFirst($books);
                 break;
@@ -54,7 +54,7 @@ class BooksFilteringServices
     public function filtering($books, $filteringParameter)
     {
 
-        switch ($filteringParameter){
+        switch ($filteringParameter) {
             case "before1980":
                 $books = $this->publishedBefore($books);
                 break;
@@ -74,10 +74,9 @@ class BooksFilteringServices
      */
     public function newBooksFirst($books)
     {
-        usort($books, function($a, $b) {
+        usort($books, function ($a, $b) {
 
             return $b['publishing_year'] <=> $a['publishing_year'];
-
         });
 
         return $books;
@@ -91,10 +90,9 @@ class BooksFilteringServices
      */
     public function oldBooksFirst($books)
     {
-        usort($books, function($a, $b) {
+        usort($books, function ($a, $b) {
 
             return $a['publishing_year'] <=> $b['publishing_year'];
-
         });
 
         return $books;
@@ -108,7 +106,7 @@ class BooksFilteringServices
      */
     public function publishedBefore($books)
     {
-        $filteredBooks = array_filter($books, function($k) {
+        $filteredBooks = array_filter($books, function ($k) {
             return $k['publishing_year'] <= 1979;
         });
         return $filteredBooks;
@@ -122,7 +120,7 @@ class BooksFilteringServices
      */
     public function publishedAfter($books)
     {
-        $filteredBooks = array_filter($books, function($k) {
+        $filteredBooks = array_filter($books, function ($k) {
             return $k['publishing_year'] > 1979;
         });
         return $filteredBooks;
