@@ -3,10 +3,11 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Book extends Authenticatable
+class Book extends Model
 {
     use Notifiable;
 
@@ -16,7 +17,8 @@ class Book extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'title', 'author', 'description', 'book_cover', 'category', 'language', 'publishing_year','created_at',
+        'updated_at',
     ];
 
     /**

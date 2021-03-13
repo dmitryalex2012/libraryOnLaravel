@@ -2,6 +2,8 @@
 
 namespace App\app\Services;
 
+use App\app\Models\Books;
+
 class BooksFilteringServices
 {
     /**
@@ -13,15 +15,21 @@ class BooksFilteringServices
      */
     public function findBook($books, $searchParameter)
     {
-        $finedBooks = [];
-        foreach ($books as $book) {
-            if (($book['author'] === $searchParameter) || ($book['title'] === $searchParameter)) {
-                $finedBooks = $book;
-            }
-        }
+//        $finedBooks[0] = null;
+//        foreach ($books as $book) {
+//            if (($book['author'] === $searchParameter) || ($book['title'] === $searchParameter)) {
+//                $finedBooks = $book;
+//            }
+//        }
+        $finedBooks = Books::query()->where('author', $searchParameter)->orWhere('title', $searchParameter)
+            ->get()->toArray();
 
-        return $finedBooks;
-    }
+//        if (empty($finedBooks)) {
+//            $finedBooks[0] = null;
+//        }
+
+        return $finedBooks[0];
+}
 
     /**
      * Sorts the list of books: new or old books first.

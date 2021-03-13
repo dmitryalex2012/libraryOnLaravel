@@ -11,15 +11,16 @@
     <h1 class="h1IndexPage">Books list</h1>
 
     <?php
-//        echo '<pre>';
-//        if (isset($books)){
-//            print_r($books);
-//        }
+//    echo '<pre>';
+//    if (isset($books)) {
+//        print_r($books);
+//    }
+//    echo '</pre>';
 
-    //    if (isset($filters)){
-    //        print_r($filters);
-    //    }
-    //        echo '</pre>';
+//    if (isset($filters)) {
+//        print_r($filters);
+//    }
+
     ?>
 
     <div class="container">
@@ -72,7 +73,6 @@
             {{-- "Books list" section --}}
             <div class="col-md-9">
 
-
                 <table class="table table-bordered border-success">
                     <thead>
                         <tr>
@@ -89,14 +89,13 @@
                     <tbody>
                         <tr>
                             <th scope="row">
-{{--                                <p class="pImageIndex">{{$book['book_cover']}}</p>--}}
                                 <img src="{{$book['book_cover']}}" alt="">
                             </th>
                             <td>
                                 <h6>"{{$book['title']}}"</h6>
                             </td>
                             <td>
-                                <h6>Author: {{$book['author']}}</h6>
+                                <h6>{{$book['author']}}</h6>
                             </td>
                             <td>
                                 <h6 class="h6DescriptionIndex">Description: {{$book['description']}}</h6>
