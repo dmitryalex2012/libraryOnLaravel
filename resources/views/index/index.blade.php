@@ -12,7 +12,7 @@
 
     <?php
 //    echo '<pre>';
-//    if (isset($books)) {
+//    if (!empty($books)) {
 //        print_r($books);
 //    }
 //    echo '</pre>';
@@ -85,31 +85,33 @@
                         </tr>
                     </thead>
 
-                    @foreach ($books as $book)
-                    <tbody>
-                        <tr>
-                            <th scope="row">
-                                <img src="{{$book['book_cover']}}" alt="">
-                            </th>
-                            <td>
-                                <h6>"{{$book['title']}}"</h6>
-                            </td>
-                            <td>
-                                <h6>{{$book['author']}}</h6>
-                            </td>
-                            <td>
-                                <h6 class="h6DescriptionIndex">Description: {{$book['description']}}</h6>
-                            </td>
-                            <td>
-                                <h6 class="h6Index">Language: {{$book['language']}}</h6>
-                                <h6 class="h6Index">Publishing year: {{$book['publishing_year']}}</h6>
-                            </td>
-                            <td>
-                                <h6 class="h6Index">{{$book['category']}}</h6>
-                            </td>
-                        </tr>
-                    </tbody>
-                    @endforeach
+                    @if (!empty($books))
+                        @foreach ($books as $book)
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <img src="{{$book['book_cover']}}" alt="">
+                                </th>
+                                <td>
+                                    <h6>"{{$book['title']}}"</h6>
+                                </td>
+                                <td>
+                                    <h6>{{$book['author']}}</h6>
+                                </td>
+                                <td>
+                                    <h6 class="h6DescriptionIndex">Description: {{$book['description']}}</h6>
+                                </td>
+                                <td>
+                                    <h6 class="h6Index">Language: {{$book['language']}}</h6>
+                                    <h6 class="h6Index">Publishing year: {{$book['publishing_year']}}</h6>
+                                </td>
+                                <td>
+                                    <h6 class="h6Index">{{$book['category']}}</h6>
+                                </td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    @endif
                 </table>
 
             </div>

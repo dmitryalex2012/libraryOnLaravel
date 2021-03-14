@@ -22,27 +22,34 @@ class BooksServices
      */
     public function makeBookList($filters, $pageNumber)
     {
-        $books = Books::getBooks();
-
         if (isset($filters['findText'])) {
 
             /** Find book by author or title. */
-             $book = $this->filteringServices->findBook($books, $filters['findText']);
+            $book = Books::findBooks($filters['findText']);
 
-            return (["books" => array($book),
+            return (["books" => $book,
                 "booksPagesQuantity" => 1]);
         }
 
+        $books = Books::getBooks();
         if (isset($filters)) {
+
             /** When "filters" changed */
             SessionServices::filtersToSession($filters);
             $filters ['pageNumber'] = 1;
-        } elseif (isset($pageNumber)) {
-                SessionServices::pageNumberToSession($pageNumber);
 
-                $filters = SessionServices::filtersFromSession();   // when page number changed
+        } elseif (isset($pageNumber)) {
+
+            /** When page number changed */
+            SessionServices::pageNumberToSession($pageNumber);
+
+            $filters = SessionServices::filtersFromSession();
+
         } else {
-                $filters = SessionServices::loadInitialData();      // get $filters from SESSION for "index" page
+
+            /** Get $filters from SESSION for "index" page */
+            $filters = SessionServices::loadInitialData();
+
         }
 
         $books = $this->filteringServices->sorting($books, $filters['sorting']);
