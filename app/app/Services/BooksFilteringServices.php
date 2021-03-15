@@ -7,44 +7,51 @@ use App\app\Models\Books;
 
 class BooksFilteringServices
 {
+
     /**
-     * Sorts the list of books: new or old books first.
+     * Gets books list from Books model using sorting and filtering parameters.
      *
-     * @param $books
      * @param $sortingParameter
-     * @return mixed
-     */
-    public function sorting($books, $sortingParameter)
-    {
-        switch ($sortingParameter) {
-            case "newBooksFirst":
-                $books = Books::sortingBooks('publishing_year', 'DESC');
-                break;
-            case "oldBooksFirst":
-                $books = Books::sortingBooks('publishing_year', 'ASC');
-                break;
-        }
-
-        return $books;
-    }
-
-    /**
-     * Filters the list of books: displays books published before or after 1960 year.
-     *
-     * @param $books
      * @param $filteringParameter
      * @return array
      */
-    public function filtering($books, $filteringParameter)
+    public function getBooks($sortingParameter, $filteringParameter)
     {
-        switch ($filteringParameter) {
-            case "before1980":
-                $books = Books::filteringBooks('publishing_year', '<=', 1979);
-                break;
-            case "after1980":
-                $books = Books::filteringBooks('publishing_year', '>', 1979);
-                break;
+        $filteringColumn = 'publishing_year';
+        $sign = '>';
+        $value = 0;
+        $orderByColumn = 'id';
+        $direction = 'ASC';
+
+        if (!empty($sortingParameter)) {
+            $orderByColumn = 'publishing_year';
+            switch ($sortingParameter) {
+                case 'newBooksFirst':
+                    $direction = 'DESC';
+                    break;
+                case 'oldBooksFirst':
+                    $direction = 'ASC';
+                    break;
+                case 'none':
+                    $orderByColumn = 'id';
+                    $direction = 'ASC';
+            }
         }
+
+        if (!empty($filteringParameter)) {
+            switch ($filteringParameter) {
+                case "before1980":
+                    $sign = '<=';
+                    $value = 1979;
+                    break;
+                case "after1980":
+                    $sign = '>';
+                    $value = 1980;
+                    break;
+            }
+        }
+
+        $books = Books::makeBooksList($filteringColumn, $sign, $value, $orderByColumn, $direction);
 
         return $books;
     }

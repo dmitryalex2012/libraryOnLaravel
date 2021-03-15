@@ -18,13 +18,8 @@ class Books extends Model
             ->get()->toArray();
     }
 
-    public static function sortingBooks($column, $direction)
+    public static function makeBooksList($column, $sign, $value, $orderByColumn, $direction)
     {
-        return Books::query()->orderBy($column, $direction)->get()->toArray();
-    }
-
-    public static function filteringBooks($column, $sign, $value)
-    {
-        return Books::query()->where($column, $sign, $value)->get()->toArray();
+        return Books::query()->where($column, $sign, $value)->orderBy($orderByColumn, $direction)->get()->toArray();
     }
 }

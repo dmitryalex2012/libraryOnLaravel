@@ -55,8 +55,19 @@ class IndexController extends Controller
             'books' => $filteredBooks["books"],
             'booksPagesQuantity' => $filteredBooks["booksPagesQuantity"],
             'filters' => $filters
-        ]);
+            ]);
     }
+//    public function filters($filtersIndex)
+//    {
+//
+//        $filters = SessionServices::filtersFromSession();
+//
+//        return view('index/index', [
+//            'books' => $filtersIndex,
+//            'booksPagesQuantity' => 1,
+//            'filters' => $filters
+//        ]);
+//    }
 
 
     /**

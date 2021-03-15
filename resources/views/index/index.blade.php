@@ -10,6 +10,7 @@
 
     <h1 class="h1IndexPage">Books list</h1>
 
+{{--    {{'<pre>'}}--}}
     <?php
 //    echo '<pre>';
 //    if (!empty($books)) {
@@ -20,8 +21,8 @@
 //    if (isset($filters)) {
 //        print_r($filters);
 //    }
-
     ?>
+{{--    {{'<pre>'}}--}}
 
     <div class="container">
 

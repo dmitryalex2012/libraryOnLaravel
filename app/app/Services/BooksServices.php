@@ -31,7 +31,6 @@ class BooksServices
                 "booksPagesQuantity" => 1]);
         }
 
-        $books = Books::getBooks();
         if (isset($filters)) {
 
             /** When "filters" changed */
@@ -52,9 +51,7 @@ class BooksServices
 
         }
 
-        $books = $this->filteringServices->sorting($books, $filters['sorting']);
-
-        $books = $this->filteringServices->filtering($books, $filters['filtering']);
+        $books = $this->filteringServices->getBooks($filters['sorting'], $filters['filtering']);
 
         $booksPagesQuantity = ceil(count($books) / 10);
         $books = array_slice($books, ($filters ['pageNumber'] - 1) * 10, 10);
