@@ -3,13 +3,13 @@
 
 namespace App;
 
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class Book extends Model
 {
-    use Notifiable;
+//    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,21 +21,26 @@ class Book extends Model
         'updated_at',
     ];
 
+    public function scopeFilter(Builder $builder, QueryFilter $filters)
+    {
+        return $filters->apply($builder);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+//    protected $hidden = [
+//        'password', 'remember_token',
+//    ];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+//    protected $casts = [
+//        'email_verified_at' => 'datetime',
+//    ];
 }
