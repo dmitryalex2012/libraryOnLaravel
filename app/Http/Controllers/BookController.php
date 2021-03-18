@@ -2,32 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
+use App\app\Services\BookServices;
 use Illuminate\Http\Request;
 
+/**
+ * Class Book
+ * @withPath Eloquent
+ */
 class BookController extends Controller
 {
     public function index(Request $request)
     {
-//        dd($request->all());
-        $bookQuery = Book::query();
-
-        if ($request->filled('sorting')) {
-            switch ($request['sorting']) {
-                case 'newBooksFirst':
-                    $bookQuery->orderBy('publishing_year', 'DESC');
-                    break;
-                case 'oldBooksFirst':
-                    $bookQuery->orderBy('publishing_year', 'ASC');
-                    break;
-            }
-        }
-
-        $filteredBooks = $bookQuery->paginate(5);
+        $books = BookServices::getBooks($request);
 
         return view('index/book', [
-            'books' => $filteredBooks,
-            'filters' => null
+            'books' => $books,
+            'request' => $request
         ]);
     }
 }

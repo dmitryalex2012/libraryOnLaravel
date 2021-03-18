@@ -10,19 +10,11 @@
 
     <h1 class="h1IndexPage">Books list</h1>
 
-{{--    {{'<pre>'}}--}}
-    <?php
-//    echo '<pre>';
-//    if (!empty($books)) {
-//        print_r($books);
-//    }
-//    echo '</pre>';
-
-    if (isset($filters)) {
-        print_r($filters);
-    }
-    ?>
-{{--    {{'<pre>'}}--}}
+{{--    <pre>--}}
+{{--    @if (!empty($books))--}}
+{{--        {{print_r($books)}}--}}
+{{--    @endif--}}
+{{--    <pre>--}}
 
     <div class="container">
 
@@ -34,25 +26,25 @@
                 <h3 class="h3Index">Filters</h3>
 
                 <form method="Get" action="{{route('filter')}}">
-
+{{--                    @dd($request['sorting']);--}}
                     <p class="pFiltersIndex">Sorting by:</p>
                     <select class="form-select" aria-label="Default select example" name="sorting">
-                        <option value="none" @if ($filters['sorting'] === 'none') selected @endif>none</option>
-                        <option value="newBooksFirst" @if ($filters['sorting'] === 'newBooksFirst') selected @endif>
+                        <option value="none" @if ($request['sorting'] === 'none') selected @endif>none</option>
+                        <option value="newBooksFirst" @if ($request['sorting'] === 'newBooksFirst') selected @endif>
                             new books first
                         </option>
-                        <option value="oldBooksFirst" @if ($filters['sorting'] === 'oldBooksFirst') selected @endif>
+                        <option value="oldBooksFirst" @if ($request['sorting'] === 'oldBooksFirst') selected @endif>
                             old books first
                         </option>
                     </select>
 
                     <p class="pFiltersIndex">Displaying books:</p>
                     <select class="form-select" aria-label="Default select example" name="filtering">
-                        <option value="all" @if ($filters['filtering'] === 'all')  selected @endif>all</option>
-                        <option value="before1980" @if ($filters['filtering'] === 'before1980') selected @endif>
+                        <option value="all" @if ($request['filtering'] === 'all')  selected @endif>all</option>
+                        <option value="before1980" @if ($request['filtering'] === 'before1980') selected @endif>
                             published before 1980
                         </option>
-                        <option value="after1980" @if ($filters['filtering'] === 'after1980') selected @endif>
+                        <option value="after1980" @if ($request['filtering'] === 'after1980') selected @endif>
                             published after 1980
                         </option>
                     </select>
