@@ -17,25 +17,30 @@ class BookServices
     {
         $bookQuery = Book::query();
 
-        if ($request->filled('sorting')) {
-            switch ($request['sorting']) {
-                case 'newBooksFirst':
-                    $bookQuery->orderBy('publishing_year', 'DESC');
-                    break;
-                case 'oldBooksFirst':
-                    $bookQuery->orderBy('publishing_year', 'ASC');
-                    break;
-            }
-        }
+        if ($request->filled('findText')) {
+            $bookQuery->where('author', $request['findText'])->orWhere('title', $request['findText']);
+//                ->get()->toArray()
 
-        if ($request->filled('filtering')) {
-            switch ($request['filtering']) {
-                case 'before1980':
-                    $bookQuery->where('publishing_year', '<=', 1979);
-                    break;
-                case 'after1980':
-                    $bookQuery->where('publishing_year', '>', 1980);
-                    break;
+        } else {
+            if ($request->filled('sorting')) {
+                switch ($request['sorting']) {
+                    case 'newBooksFirst':
+                        $bookQuery->orderBy('publishing_year', 'DESC');
+                        break;
+                    case 'oldBooksFirst':
+                        $bookQuery->orderBy('publishing_year', 'ASC');
+                        break;
+                }
+            }
+            if ($request->filled('filtering')) {
+                switch ($request['filtering']) {
+                    case 'before1980':
+                        $bookQuery->where('publishing_year', '<=', 1979);
+                        break;
+                    case 'after1980':
+                        $bookQuery->where('publishing_year', '>', 1980);
+                        break;
+                }
             }
         }
 
