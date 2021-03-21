@@ -26,7 +26,6 @@
                 <h3 class="h3Index">Filters</h3>
 
                 <form method="Get" action="{{route('filter')}}">
-{{--                    @dd($request['sorting']);--}}
                     <p class="pFiltersIndex">Sorting by:</p>
                     <select class="form-select" aria-label="Default select example" name="sorting">
                         <option value="none" @if ($request['sorting'] === 'none') selected @endif>none</option>
