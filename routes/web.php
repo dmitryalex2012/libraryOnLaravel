@@ -17,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-//Route::get('/', 'IndexController@index');
-//Route::get('index/index', 'IndexController@index');
 Route::get('/', 'BookController@index');
 Route::get('book', 'BookController@index');
 Route::get('/filter', 'BookController@index')->name('filter');
 
-//Route::post('/filter', 'IndexController@filters')->name('filter');
 Route::get('/page/{pageNumber}', 'IndexController@pagination')->name('pageNumber');

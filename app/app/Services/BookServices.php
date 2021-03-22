@@ -19,7 +19,6 @@ class BookServices
 
         if ($request->filled('findText')) {
             $bookQuery->where('author', $request['findText'])->orWhere('title', $request['findText']);
-//                ->get()->toArray()
 
         } else {
             if ($request->filled('sorting')) {
