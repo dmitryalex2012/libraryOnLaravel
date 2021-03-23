@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', 'BookController@index');
-Route::get('book', 'BookController@index');
-Route::get('/filter', 'BookController@index')->name('filter');
+Route::get('book', 'BookController@index')->name('filter');
 
-Route::get('/page/{pageNumber}', 'IndexController@pagination')->name('pageNumber');
+Route::get('auth', 'AuthController@index');
