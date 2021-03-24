@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,7 @@ Route::get('/', 'BookController@index');
 Route::get('book', 'BookController@index')->name('filter');
 
 Route::get('auth', 'AuthController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

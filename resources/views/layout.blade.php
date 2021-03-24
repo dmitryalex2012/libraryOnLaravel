@@ -25,8 +25,8 @@
                 </ul>
             </div>
         </div>
+{{--        <a class="nav-link navButton" href="{{action('AuthController')}}">Sigh in</a>--}}
         <a class="nav-link navButton" href="{{action('AuthController@index')}}">Sigh in</a>
-{{--        <button type="button" class="btn navButton">Sign in</button>--}}
     </nav>
 
 </div>
