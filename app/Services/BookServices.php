@@ -1,6 +1,6 @@
 <?php
 
-namespace App\app\Services;
+namespace App\Services;
 
 use App\Book;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class BookServices
      * @param $request Request
      * @return mixed
      */
-    public static function getBooks($request)
+    public function getBooks($request)
     {
         $bookQuery = Book::query();
 

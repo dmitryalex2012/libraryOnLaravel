@@ -1,6 +1,6 @@
 <?php
 
-namespace App\app\Services;
+namespace App\Services;
 
 class ImageGenerationServices
 {
