@@ -39,7 +39,10 @@ class BookController extends Controller
 
         return view('index/book', [
             'books' => $books,
-            'request' => $request
+            'request' => [
+                'sorting' => $request['sorting'],
+                'filtering' => $request['filtering'],
+                ]
         ]);
     }
 }

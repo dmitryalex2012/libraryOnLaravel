@@ -43,7 +43,7 @@ class BookServices
             }
         }
 
-        $filteredBooks = $bookQuery->paginate(5)->withPath('?' . $request->getQueryString());
+        $filteredBooks = $bookQuery->paginate(5);
 
         return $filteredBooks;
     }

@@ -10,12 +10,6 @@
 
     <h1 class="h1IndexPage">Books list</h1>
 
-
-    {{--    <pre>--}}
-    {{--    @if (!empty($books))--}}
-    {{--        {{print_r($books)}}--}}
-    {{--    @endif--}}
-    {{--    <pre>--}}
     <div class="container">
 
         <div class="row">
