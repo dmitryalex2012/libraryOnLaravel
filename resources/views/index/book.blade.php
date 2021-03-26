@@ -1,4 +1,5 @@
 <?php
+
 /* @var $books array */
 /* @var $booksPagesQuantity int */
 /* @var $filters array */

@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" >
     <link href="{{ asset('css/auth.css') }}" rel="stylesheet" >
-    <title></title>
+    <title>Library on Laravel</title>
 </head>
 <body>
 
@@ -25,8 +25,23 @@
                 </ul>
             </div>
         </div>
-{{--        <a class="nav-link navButton" href="{{action('AuthController')}}">Sigh in</a>--}}
-        <a class="nav-link navButton" href="{{action('AuthController@index')}}">Sigh in</a>
+
+{{--        <a class="nav-link navButton" href="{{action('AuthController@index')}}">Sigh in</a>--}}
+
+        @if (Route::has('login'))
+            <div>
+                @auth
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a class="btn btn-link" href="{{ route('login') }}">Login</a>
+
+                    @if (Route::has('register'))
+                        <a class="btn btn-link" href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
+
     </nav>
 
 </div>
@@ -37,8 +52,6 @@
     @yield('content')
 
 </div>
-
-
 
 
 <footer class="footer">
