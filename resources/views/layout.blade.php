@@ -31,7 +31,8 @@
         @if (Route::has('login'))
             <div>
                 @auth
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a class="btn btn-link" href="{{ url('/home') }}">Home</a>
+                    <a class="btn btn-link" href="{{ url('logout') }}">Logout</a>
                 @else
                     <a class="btn btn-link" href="{{ route('login') }}">Login</a>
 

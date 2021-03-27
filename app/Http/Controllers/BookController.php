@@ -37,7 +37,7 @@ class BookController extends Controller
     {
         $books = $this->bookServices->getBooks($request);
 
-        return view('index/book', [
+        return view('index.book', [
             'books' => $books,
             'request' => [
                 'sorting' => $request['sorting'],
