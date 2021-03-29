@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 /* @var Auth Illuminate\Support\Facades\Auth */
 ?>
 
-@extends('layout')
+@extends('./layouts.app')
 
 @section('content')
 <div class="container">

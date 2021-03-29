@@ -5,7 +5,7 @@
 /* @var $filters array */
 ?>
 
-@extends('layout')
+@extends('./layouts.app')
 
 @section('content')
 
