@@ -16,6 +16,11 @@ body {
     height: 60px;
 }
 
+.nav-link{
+    display: inline;
+    padding: 0 10px!important;
+}
+
 .navButton{
     margin-right: 5%;
 }

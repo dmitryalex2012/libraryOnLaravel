@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailTemp;
 use App\Services\BookServices;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 /**
@@ -43,6 +45,28 @@ class BookController extends Controller
                 'sorting' => $request['sorting'],
                 'filtering' => $request['filtering'],
                 ]
+        ]);
+    }
+
+    public function mail()
+    {
+//        $message = 'Send';
+
+//        Mail::to('tpmfd27@gmail.com');
+
+//        Mail::raw('Привет', function ($message) {
+//            $message->from('Name', 'Vasya Pupkin');
+//            $message->to('vasya@yandex.ru');
+//        });
+
+        $comment = 'Это сообщение отправлено из формы обратной связи';
+        $toEmail = "tpmfd27@gmail.com";
+        Mail::to($toEmail)->send(new MailTemp($comment));
+
+//        return 'Сообщение отправлено на адрес ' . $toEmail;
+
+        return view('mail', [
+            'message' => 'Сообщение отправлено на адрес ' . $toEmail,
         ]);
     }
 }
