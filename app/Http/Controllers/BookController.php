@@ -63,8 +63,6 @@ class BookController extends Controller
         $toEmail = "tpmfd27@gmail.com";
         Mail::to($toEmail)->send(new MailTemp($comment));
 
-//        return 'Сообщение отправлено на адрес ' . $toEmail;
-
         return view('mail', [
             'message' => 'Сообщение отправлено на адрес ' . $toEmail,
         ]);
