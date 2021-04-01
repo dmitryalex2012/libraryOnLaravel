@@ -50,15 +50,6 @@ class BookController extends Controller
 
     public function mail()
     {
-//        $message = 'Send';
-
-//        Mail::to('tpmfd27@gmail.com');
-
-//        Mail::raw('Привет', function ($message) {
-//            $message->from('Name', 'Vasya Pupkin');
-//            $message->to('vasya@yandex.ru');
-//        });
-
         $comment = 'Это сообщение отправлено из формы обратной связи';
         $toEmail = "tpmfd27@gmail.com";
         Mail::to($toEmail)->send(new MailTemp($comment));
