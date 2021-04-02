@@ -20,9 +20,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{action('BookController@index')}}">Books</a>
-
-                        <a class="nav-link" href="{{action('BookController@mail')}}">Mail</a>
-
+{{--                        <a class="nav-link" href="{{action('BookController@mail')}}">Mail</a>--}}
                     </li>
                 </ul>
             </div>
