@@ -26,5 +26,3 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-//Route::get('mail', 'BookController@mail');
-//Route::get('emails/auth/registration', 'BookController@mail');
