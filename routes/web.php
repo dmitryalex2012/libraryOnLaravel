@@ -22,7 +22,10 @@ Route::get('/', 'BookController@index');
 Route::get('book', 'BookController@index')->name('filter');
 
 Auth::routes();
+Route::prefix('manage')->group(function () {
+    Route::get('/', 'ManegeController@index');
+    Route::get('dashboard', 'ManegeController@dashboard')->name('manage.dashboard');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
