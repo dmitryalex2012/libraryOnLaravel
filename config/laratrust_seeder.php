@@ -22,7 +22,7 @@ return [
             'profile' => 'r,u'
         ],
         'user' => [
-            'profile' => 'r,u',
+            'profile' => 'r',
         ],
         'role_name' => [
             'module_1_name' => 'c,r,u,d',

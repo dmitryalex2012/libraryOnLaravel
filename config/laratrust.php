@@ -2,6 +2,7 @@
 
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Team;
 use App\User;
 
 return [
@@ -99,7 +100,7 @@ return [
         /**
          * Will be used only if the teams functionality is enabled.
          */
-//        'team' => \App\Models\Team::class,
+        'team' => Team::class,
     ],
 
     /*
