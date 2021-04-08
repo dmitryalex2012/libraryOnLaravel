@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call(BookTableSeeder::class);
+//        $this->call(BookTableSeeder::class);
         $this->call(LaratrustSeeder::class);
 
         Model::reguard();

@@ -22,7 +22,7 @@ Route::get('/', 'BookController@index');
 Route::get('book', 'BookController@index')->name('filter');
 
 Auth::routes();
-Route::prefix('manage')->middleware('role:Administrator|user')->group(function () {
+Route::prefix('manage')->middleware('role:superadministrator')->group(function () {
     Route::get('/', 'ManegeController@index');
     Route::get('dashboard', 'ManegeController@dashboard')->name('manage.dashboard');
 });
