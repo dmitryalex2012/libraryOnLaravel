@@ -8,6 +8,7 @@ Loading project algorithm.
 6. Configure the local web server (domain name and folder, nginx, php from 7.2.5, mysql etc).
 7. Configure the local web server and ".env" file for mail sanding through "smtp" server.
 8. Install "Laratrust" according to https://laratrust.santigarcor.me/docs/6.x/installation.html.
+    Perform migration and seeding.
 
 P. S.
 1. (For item 7) Setting for mail sending (set "tls" instead of "ssl"):
