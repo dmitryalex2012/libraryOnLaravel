@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class ManegeController extends Controller
+class ManageController extends Controller
 {
     public function index()
     {
@@ -12,5 +12,10 @@ class ManegeController extends Controller
     public function dashboard()
     {
         return view('manage.dashboard');
+    }
+
+    public function books()
+    {
+        return view('manage.books');
     }
 }

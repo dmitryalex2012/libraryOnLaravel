@@ -23,8 +23,9 @@ Route::get('book', 'BookController@index')->name('filter');
 
 Auth::routes();
 Route::prefix('manage')->middleware('role:superadministrator')->group(function () {
-    Route::get('/', 'ManegeController@index');
-    Route::get('dashboard', 'ManegeController@dashboard')->name('manage.dashboard');
+    Route::get('/', 'ManageController@index');
+    Route::get('dashboard', 'ManageController@dashboard')->name('manage.dashboard');
+    Route::get('books', 'ManageController@books')->name('manage.books');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

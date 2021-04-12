@@ -34,7 +34,22 @@
 
 <div class="container" >
 
-    @yield('content')
+    <h2 class="d-flex justify-content-center">
+        "Management" section
+    </h2>
+
+    <div class="row">
+        <div class="col-2">
+            <nav class="nav flex-column">
+                <a class="nav-link" href="{{route('manage.books')}}">Books</a>
+                <a class="nav-link" href="#">Users</a>
+            </nav>
+        </div>
+
+        <div class="col-10">
+            @yield('content')
+        </div>
+    </div>
 
 </div>
 
