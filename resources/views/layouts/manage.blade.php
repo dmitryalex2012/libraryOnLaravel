@@ -34,16 +34,16 @@
 
 <div class="container" >
 
-    <h2 class="d-flex justify-content-center">
+    <h2 class="d-flex justify-content-center p-3">
         "Management" section
     </h2>
 
     <div class="row">
-        <div class="col-2">
-            <nav class="nav flex-column">
-                <a class="nav-link" href="{{route('manage.books')}}">Books</a>
-                <a class="nav-link" href="#">Users</a>
-            </nav>
+        <div class="col-2 d-flex justify-content-center">
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="{{route('manage.books')}}">Books</a>
+                    <a class="nav-link" href="{{route('manage.users')}}">Users</a>
+                </nav>
         </div>
 
         <div class="col-10">
