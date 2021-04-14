@@ -56,7 +56,7 @@
 
             </div>
 
-            {{-- "Books list" section --}}
+            {{-- "Users list" section --}}
             <div class="col-md-9">
 
                 <p class="d-flex justify-content-center">Users</p>
@@ -68,6 +68,7 @@
                         <th class="secondTd" scope="col">Name</th>
                         <th class="thirdTd" scope="col">Email</th>
                         <th class="fourthTd" scope="col">Created</th>
+                        <th class="fourthTd" scope="col">Action</th>
                     </tr>
                     </thead>
 
@@ -86,6 +87,11 @@
                                 </td>
                                 <td>
                                     <h6>{{$user['created_at']}}</h6>
+                                </td>
+                                <td>
+                                    <a href="{{route('manage.editUser', $user->id)}}"
+                                       class="btn btn-primary btn-sm" role="button">Edit
+                                    </a>
                                 </td>
                             </tr>
                             </tbody>

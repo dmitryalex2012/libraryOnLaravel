@@ -6,6 +6,7 @@ use App\Services\BookServices;
 use App\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ManageController extends Controller
@@ -58,7 +59,7 @@ class ManageController extends Controller
 
     public function users(Request $request)
     {
-        $users = $this->userServices->getUsers($request);
+        $users = $this->userServices->getUsers();
 
         return view('manage.users', [
             'users' => $users,
@@ -66,6 +67,17 @@ class ManageController extends Controller
                 'sorting' => $request['sorting'],
                 'filtering' => $request['filtering'],
             ]
+        ]);
+    }
+
+    public function editUser($id)
+    {
+//        $user = $this->userServices->getUser($id);
+//        User::where('id', '=', $id);
+        $user = DB::table('users')->where('id', $id)->first();
+
+        return view('manage.editUser', [
+            'user' => $user
         ]);
     }
 }

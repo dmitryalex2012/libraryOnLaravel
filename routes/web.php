@@ -27,6 +27,7 @@ Route::prefix('manage')->middleware('role:superadministrator')->group(function (
     Route::get('dashboard', 'ManageController@dashboard')->name('manage.dashboard');
     Route::get('books', 'ManageController@books')->name('manage.books');
     Route::get('users', 'ManageController@users')->name('manage.users');
+    Route::get('users/edit/{id}', 'ManageController@editUser')->name('manage.editUser');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
