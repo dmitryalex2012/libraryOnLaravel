@@ -13,48 +13,50 @@
 
                 <h3 class="d-flex justify-content-center">User editing</h3>
 
+        <pre>
+        <?php
+//            var_dump($user);
+        ?>
+        </pre>
 
-                <form method="Get" action="#">
+        <div class="card-body">
+            <form method="POST" action="{{ route('userEdited') }}">
+                @csrf
 
-                    <label for="inputAddress2" class="form-label d-flex justify-content-center mb-2">Name</label>
-                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="inputAddress2"
-                           placeholder="{{$user->name}}">
+                <div class="form-group mb-4">
+                    <label for="id" class="form-label d-flex justify-content-center mb-2">Id</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="id"
+                           name="id" placeholder="{{$user['id']}}">
+                </div>
 
-                    <div class="d-flex justify-content-center mb-2">
-                        <input class="buttonIndex" type="submit">
+                <div class="form-group mb-4">
+                    <label for="name" class="form-label d-flex justify-content-center mb-2">Name</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="name"
+                           name="name" placeholder="{{$user['name']}}">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="email" class="form-label d-flex justify-content-center mb-2">Email</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="email"
+                           name="email" placeholder="{{$user['email']}}">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="created_at" class="form-label d-flex justify-content-center mb-2">Created at</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="created_at"
+                           name="created_at" placeholder="{{$user['created_at']}}">
+                </div>
+
+                <div class="form-group row mb-0">
+                    <div class="col-md-12 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Send') }}
+                        </button>
                     </div>
+                </div>
 
-                </form>
-
-                <table class="table table-bordered border-success">
-                    <thead>
-                    <tr>
-                        <th class="firstTd" scope="col">Id</th>
-                        <th class="secondTd" scope="col">Name</th>
-                        <th class="thirdTd" scope="col">Email</th>
-                        <th class="fourthTd" scope="col">Created</th>
-                    </tr>
-                    </thead>
-
-                    @if (!empty($user))
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <h6>{{$user->id}}</h6>
-                                </th>
-                                <td>
-                                    <h6>{{$user->name}}</h6>
-                                </td>
-                                <td>
-                                    <h6>{{$user->email}}</h6>
-                                </td>
-                                <td>
-                                    <h6>{{$user->created_at}}</h6>
-                                </td>
-                            </tr>
-                            </tbody>
-                    @endif
-                </table>
+            </form>
+        </div>
 
     </div>
 

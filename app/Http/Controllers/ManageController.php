@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditUserRequest;
 use App\Services\BookServices;
 use App\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ManageController extends Controller
@@ -72,12 +72,19 @@ class ManageController extends Controller
 
     public function editUser($id)
     {
-//        $user = $this->userServices->getUser($id);
-//        User::where('id', '=', $id);
-        $user = DB::table('users')->where('id', $id)->first();
+        $user = $this->userServices->getUser($id);
 
         return view('manage.editUser', [
-            'user' => $user
+            'user' => $user['0']
+        ]);
+    }
+
+    public function editedUser(EditUserRequest $request)
+    {
+        $validated = $request->validated();
+
+        return view('manage.userEdited', [
+            'validated' => $validated
         ]);
     }
 }

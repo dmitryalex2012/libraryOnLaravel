@@ -45,7 +45,6 @@ class User extends Authenticatable
 
     public function getUser($id)
     {
-//        return User::query()->where(['id' => $id]);
-        return User::query()->where('id', '=>', $id);
+        return User::query()->where('id', '=', $id)->get()->toArray();
     }
 }
