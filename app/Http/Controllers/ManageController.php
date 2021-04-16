@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditUserRequest;
 use App\Services\BookServices;
-use App\User;
+use App\Services\UserServices;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,9 +20,9 @@ class ManageController extends Controller
      *
      * BookController constructor.
      * @param BookServices $bookServices
-     * @param User $userServices
+     * @param UserServices $userServices
      */
-    public function __construct(BookServices $bookServices, User $userServices)
+    public function __construct(BookServices $bookServices, UserServices $userServices)
     {
         $this->bookServices = $bookServices;
         $this->userServices = $userServices;
@@ -75,16 +75,24 @@ class ManageController extends Controller
         $user = $this->userServices->getUser($id);
 
         return view('manage.editUser', [
-            'user' => $user['0']
+            'user' => $user['0'],
+            'pageTitle' => 'User editing'
         ]);
     }
 
+    /**
+     * Performs user data validation and save to DB.
+     *
+     * @param EditUserRequest $request
+     * @return Factory|View
+     */
     public function editedUser(EditUserRequest $request)
     {
-        $validated = $request->validated();
+//        $validated = $request->validated();
+        $this->userServices->saveUserDB($request);
 
         return view('manage.userEdited', [
-            'validated' => $validated
+//            'validated' => $validated
         ]);
     }
 }

@@ -24,9 +24,10 @@ class EditUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|numeric',
+            'id' => 'required|numeric|unique:App\User,id',
             'name' => 'required|string|unique:App\User,name',
             'email' => 'required|email|unique:App\User,email',
+            'password' => 'required|between:8,64',
             'created_at' => 'required|date'
         ];
     }

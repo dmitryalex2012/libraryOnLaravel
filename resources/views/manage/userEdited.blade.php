@@ -13,12 +13,6 @@
 
                 <h3 class="d-flex justify-content-center">User edited</h3>
 
-        <pre>
-            <?php
-//                print_r($validated);
-            ?>
-        </pre>
-
     </div>
 
 @endsection
