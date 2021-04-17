@@ -25,7 +25,7 @@ class EditUserRequest extends FormRequest
     {
         return [
             'id' => 'required|numeric|unique:App\User,id',
-            'name' => 'required|string|unique:App\User,name',
+            'name' => 'required|string',
             'email' => 'required|email|unique:App\User,email',
             'password' => 'required|between:8,64',
             'created_at' => 'required|date'

@@ -99,6 +99,12 @@
                     @endif
                 </table>
 
+                <div class="d-flex justify-content-center">
+                    <a href="{{route('manage.addUser')}}"
+                       class="btn btn-primary btn-sm" role="button">Add user
+                    </a>
+                </div>
+
             </div>
 
         </div>

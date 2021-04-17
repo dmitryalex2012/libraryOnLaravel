@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 @section('content')
 
     <p class="d-flex justify-content-center">
-        Dear, {{__(Auth::user()->name)}}, you are in "manage" section.
+        Dear, {{__(Auth::user()->name)}}, welcome to "manage" section.
     </p>
 
 @endsection

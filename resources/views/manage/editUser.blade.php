@@ -14,7 +14,7 @@
                 <h3 class="d-flex justify-content-center">{{$pageTitle}}</h3>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('userEdited') }}">
+            <form method="POST" action="{{ route('manage.userEdited') }}">
                 @csrf
 
                 <div class="form-group mb-4">

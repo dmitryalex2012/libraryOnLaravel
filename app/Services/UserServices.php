@@ -11,11 +11,42 @@ class UserServices
     /**
      * Gets users list using filters and pagination.
      *
+     * @param $request
      * @return mixed
      */
-    public function getUsers()
+    public function getUsers($request)
     {
-        return User::query()->paginate(4);
+        $usersQuery = User::query();
+
+        if ($request->filled('findText')) {
+            $usersQuery->where('name', $request['findText']);
+
+        } else {
+            if ($request->filled('sorting')) {
+                switch ($request['sorting']) {
+                    case 'alphabetOrder':
+                        $usersQuery->orderBy('name', 'DESC');
+                        break;
+                    case 'reverseAlphabetOrder':
+                        $usersQuery->orderBy('name', 'ASC');
+                        break;
+                }
+            }
+            if ($request->filled('filtering')) {
+                switch ($request['filtering']) {
+                    case 'before2020':
+                        $usersQuery->where('created_at', '<=', 2020);
+                        break;
+                    case 'after2020':
+                        $usersQuery->where('created_at', '>', 2020);
+                        break;
+                }
+            }
+        }
+
+        $filteredUsers = $usersQuery->paginate(5);
+
+        return $filteredUsers;
     }
 
     /**

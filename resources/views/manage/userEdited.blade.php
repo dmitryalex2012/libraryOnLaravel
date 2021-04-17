@@ -11,7 +11,7 @@
 
     <div class="container">
 
-                <h3 class="d-flex justify-content-center">User edited</h3>
+                <h3 class="d-flex justify-content-center">User '{{$user['name']}}' in DB</h3>
 
     </div>
 

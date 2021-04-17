@@ -59,7 +59,7 @@ class ManageController extends Controller
 
     public function users(Request $request)
     {
-        $users = $this->userServices->getUsers();
+        $users = $this->userServices->getUsers($request);
 
         return view('manage.users', [
             'users' => $users,
@@ -82,17 +82,33 @@ class ManageController extends Controller
 
     /**
      * Performs user data validation and save to DB.
+     * This class is used for editing and creating users.
      *
      * @param EditUserRequest $request
      * @return Factory|View
      */
     public function editedUser(EditUserRequest $request)
     {
-//        $validated = $request->validated();
+        $validated = $request->validated();
         $this->userServices->saveUserDB($request);
 
         return view('manage.userEdited', [
-//            'validated' => $validated
+            'user' => $validated
+        ]);
+    }
+
+    public function userAdd()
+    {
+        $user = [
+            'id' => 'id',
+            'name' => 'name',
+            'email' => 'email',
+            'password' => 'password',
+            'created_at' => 'created at data'
+        ];
+        return view('manage.editUser', [
+            'user' => $user,
+            'pageTitle' => 'User adding'
         ]);
     }
 }
