@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,7 +12,7 @@ class UserServices
     /**
      * Gets users list using filters and pagination.
      *
-     * @param $request
+     * @param $request Request
      * @return mixed
      */
     public function getUsers($request)
@@ -25,20 +26,20 @@ class UserServices
             if ($request->filled('sorting')) {
                 switch ($request['sorting']) {
                     case 'alphabetOrder':
-                        $usersQuery->orderBy('name', 'DESC');
+                        $usersQuery->orderBy('name', 'ASC');
                         break;
                     case 'reverseAlphabetOrder':
-                        $usersQuery->orderBy('name', 'ASC');
+                        $usersQuery->orderBy('name', 'DESC');
                         break;
                 }
             }
             if ($request->filled('filtering')) {
                 switch ($request['filtering']) {
                     case 'before2020':
-                        $usersQuery->where('created_at', '<=', 2020);
+                        $usersQuery->whereYear('created_at', '<=', 2020);
                         break;
                     case 'after2020':
-                        $usersQuery->where('created_at', '>', 2020);
+                        $usersQuery->whereYear('created_at', '>', 2020);
                         break;
                 }
             }
