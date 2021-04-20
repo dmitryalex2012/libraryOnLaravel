@@ -17,7 +17,6 @@
 
                 {{-- "Filters" section--}}
                 <h3 class="d-flex justify-content-center">Filters</h3>
-                {{$request['sorting']}}
 
                 <form method="Get" action="{{route('manage.users')}}">
                     <p class="pt-3 pb-1 mb-0 d-flex justify-content-center">Sorting by:</p>

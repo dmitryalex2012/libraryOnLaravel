@@ -45,7 +45,7 @@ class UserServices
             }
         }
 
-        $filteredUsers = $usersQuery->paginate(5);
+        $filteredUsers = $usersQuery->paginate(5)->withPath('?' . $request->getQueryString());
 
         return $filteredUsers;
     }

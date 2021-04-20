@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddUserRequest;
 use App\Http\Requests\EditUserRequest;
 use App\Services\BookServices;
 use App\Services\UserServices;
@@ -97,7 +98,7 @@ class ManageController extends Controller
         ]);
     }
 
-    public function userAdd()
+    public function addUser()
     {
         $user = [
             'id' => 'id',
@@ -106,9 +107,19 @@ class ManageController extends Controller
             'password' => 'password',
             'created_at' => 'created at data'
         ];
-        return view('manage.editUser', [
+        return view('manage.addingUser', [
             'user' => $user,
             'pageTitle' => 'User adding'
+        ]);
+    }
+
+    public function userAdded(AddUserRequest $request)
+    {
+        $validated = $request->validated();
+        $this->userServices->saveUserDB($request);
+
+        return view('manage.userEdited', [
+            'user' => $validated
         ]);
     }
 }
