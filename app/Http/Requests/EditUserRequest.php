@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EditUserRequest extends FormRequest
 {
@@ -24,9 +25,13 @@ class EditUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|numeric',
             'name' => 'required|string',
-            'email' => 'required|email|unique:App\User,email',
+//            'email' => 'required|email|unique:App\User,email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('App\User')->ignore($user->id)
+            ],
             'password' => 'required|between:8,64',
             'created_at' => 'required|date'
         ];

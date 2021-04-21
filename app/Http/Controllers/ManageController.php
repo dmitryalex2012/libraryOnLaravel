@@ -86,11 +86,15 @@ class ManageController extends Controller
      * This class is used for editing and creating users.
      *
      * @param EditUserRequest $request
+     * @param $id
      * @return Factory|View
      */
     public function editedUser(EditUserRequest $request)
     {
+//        dd($request['id']);
         $validated = $request->validated();
+
+//        $this->userServices->deleteUserDB($);
         $this->userServices->saveUserDB($request);
 
         return view('manage.userEdited', [

@@ -28,7 +28,7 @@ Route::prefix('manage')->middleware('role:superadministrator')->group(function (
     Route::get('books', 'ManageController@books')->name('manage.books');
     Route::get('users', 'ManageController@users')->name('manage.users');
     Route::get('users/edit/{id}', 'ManageController@editUser')->name('manage.editUser');
-    Route::post('user/edited', 'ManageController@editedUser')->name('manage.userEdited');
+    Route::post('user/edited{id}', 'ManageController@editedUser')->name('manage.userEdited');
     Route::get('user/add', 'ManageController@addUser')->name('manage.addUser');
     Route::post('user/added', 'ManageController@userAdded')->name('manage.userAdded');
 });

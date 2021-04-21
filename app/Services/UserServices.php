@@ -78,4 +78,16 @@ class UserServices
 
         return;
     }
+
+    /**
+     * Deletes user from DB by ID
+     *
+     * @param $id
+     */
+    public function deleteUserDB($id)
+    {
+        DB::table('users')->where('id', '=', $id)->delete();
+
+        return;
+    }
 }
