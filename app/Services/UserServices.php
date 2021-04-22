@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserServices
 {
@@ -89,5 +90,28 @@ class UserServices
         DB::table('users')->where('id', '=', $id)->delete();
 
         return;
+    }
+
+    /**
+     * Performs user validation after user data changing by superadministrator.
+     *
+     * @param Request $request
+     * @param $oldID
+     * @return array
+     */
+    public function validUser(Request $request, $oldID)
+    {
+        $validator = $request->validate([
+            'name' => 'required|string',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('App\User')->ignore($oldID)
+            ],
+            'password' => 'required|between:8,64',
+            'created_at' => 'required|date'
+        ]);
+
+        return $validator;
     }
 }

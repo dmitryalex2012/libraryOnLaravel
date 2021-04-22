@@ -14,22 +14,25 @@
                 <h3 class="d-flex justify-content-center">{{$pageTitle}}</h3>
 
         <div class="card-body">
+
             <form method="POST" action="{{ route('manage.userEdited', $user['id']) }}">
                 @csrf
 
-{{--                <div class="form-group mb-4">--}}
-{{--                    @error('id')--}}
-{{--                    <div class="alert alert-danger">{{$errors->first('id')}}</div>--}}
-{{--                    @enderror--}}
-{{--                    <label for="id" class="form-label d-flex justify-content-center mb-2">Id</label>--}}
-{{--                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="id"--}}
-{{--                           name="id" placeholder="{{$user['id']}}" value="{{ old('id') }}">--}}
-{{--                </div>--}}
+                <div class="form-group mb-4">
+                    @error('id')
+                    <div class="alert alert-danger">{{$errors->first('id')}}</div>
+                    @enderror
+
+                    <label for="id" class="form-label d-flex justify-content-center mb-2">Id</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="id"
+                           name="id" placeholder="{{$user['id']}}" value="{{ old('id') }}">
+                </div>
 
                 <div class="form-group mb-4">
                     @error('name')
                     <div class="alert alert-danger">{{$errors->first('name')}}</div>
                     @enderror
+
                     <label for="name" class="form-label d-flex justify-content-center mb-2">Name</label>
                     <input type="text" class="form-control d-flex justify-content-center mb-2" id="name"
                            name="name" placeholder="{{$user['name']}}" value="{{ old('name') }}">

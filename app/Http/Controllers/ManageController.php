@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddUserRequest;
-use App\Http\Requests\EditUserRequest;
 use App\Services\BookServices;
 use App\Services\UserServices;
 use Illuminate\Contracts\View\Factory;
@@ -40,7 +39,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Gets books for "books.blade".
+     * Gets books.
      *
      * @param Request $request
      * @return Factory|View
@@ -58,6 +57,12 @@ class ManageController extends Controller
         ]);
     }
 
+    /**
+     * Gets users
+     *
+     * @param Request $request
+     * @return Factory|View
+     */
     public function users(Request $request)
     {
         $users = $this->userServices->getUsers($request);
@@ -71,6 +76,12 @@ class ManageController extends Controller
         ]);
     }
 
+    /**
+     * Gets user for editing.
+     *
+     * @param $id
+     * @return Factory|View
+     */
     public function editUser($id)
     {
         $user = $this->userServices->getUser($id);
@@ -85,38 +96,45 @@ class ManageController extends Controller
      * Performs user data validation and save to DB.
      * This class is used for editing and creating users.
      *
-     * @param EditUserRequest $request
-     * @param $id
+     * @param Request $request
+     * @param $oldID
      * @return Factory|View
      */
-    public function editedUser(EditUserRequest $request)
+    public function editedUser(Request $request, $oldID)
     {
-//        dd($request['id']);
-        $validated = $request->validated();
+        $validator = $this->userServices->validUser($request, $oldID);
 
-//        $this->userServices->deleteUserDB($);
+        $this->userServices->deleteUserDB($oldID);
         $this->userServices->saveUserDB($request);
 
         return view('manage.userEdited', [
-            'user' => $validated
+            'user' => $validator
         ]);
     }
 
+    /**
+     * Adds user to DB
+     *
+     * @return Factory|View
+     */
     public function addUser()
     {
-        $user = [
-            'id' => 'id',
-            'name' => 'name',
-            'email' => 'email',
-            'password' => 'password',
-            'created_at' => 'created at data'
-        ];
         return view('manage.addingUser', [
-            'user' => $user,
+            'user' => [
+                'id' => 'id',
+                'name' => 'name',
+                'email' => 'email',
+                'password' => 'password',
+                'created_at' => 'created at data'
+            ],
             'pageTitle' => 'User adding'
         ]);
     }
 
+    /**
+     * @param AddUserRequest $request
+     * @return Factory|View
+     */
     public function userAdded(AddUserRequest $request)
     {
         $validated = $request->validated();
