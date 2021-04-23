@@ -144,4 +144,44 @@ class ManageController extends Controller
             'user' => $validated
         ]);
     }
+
+    public function bookEditing($id)
+    {
+        $book = $this->bookServices->getBook($id);
+        $book = $book[0];
+
+        return view('manage.bookEditing', [
+            'book' => $book,
+            'pageTitle' => 'Book editing'
+        ]);
+    }
+
+    public function editBook($id)
+    {
+        $book = $this->bookServices->getBook($id);
+        $title = $book[0]['title'];
+
+        return view('manage.bookModified', [
+            'message' => " . $title . " . 'book edited.'
+        ]);
+    }
+
+    public function addBook()
+    {
+        return view('manage.bookModified', [
+            'message' => 'book added.'
+        ]);
+    }
+
+    public function deleteBook($id)
+    {
+        $book = $this->bookServices->getBook($id);
+        $title = $book[0]['title'];
+
+        $this->bookServices->bookDelete($id);
+
+        return view('manage.bookModified', [
+            'message' => "$title" . 'book deleted.'
+        ]);
+    }
 }

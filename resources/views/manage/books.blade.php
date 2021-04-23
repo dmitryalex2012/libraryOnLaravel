@@ -13,10 +13,10 @@
 
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-lg-2">
 
                 {{-- "Filters" section --}}
-                <h3 class="h3Index">Filters</h3>
+                <p class="fw-light fs-5 text-center">Filters</p>
 
                 <form method="Get" action="{{route('manage.books')}}">
                     <p class="pFiltersIndex">Sorting by:</p>
@@ -43,7 +43,7 @@
 
                     <p class="pFiltersIndex">Find by author or title:</p>
                     <label class="d-flex justify-content-center">
-                        <input type="text" name="findText">
+                        <input class="w-100" type="text" name="findText">
                     </label>                <br>
 
                     <div class="d-flex justify-content-center">
@@ -55,9 +55,9 @@
             </div>
 
             {{-- "Books list" section --}}
-            <div class="col-md-9">
+            <div class="col-lg-10">
 
-                <p class="d-flex justify-content-center">Books</p>
+                <p class="fw-light fs-5 text-center">Books</p>
 
                 <table class="table table-bordered border-success">
                     <thead>
@@ -68,6 +68,7 @@
                         <th class="fourthTd" scope="col">Book description</th>
                         <th class="fifthTd" scope="col">Book data</th>
                         <th class="sixthTd" scope="col">Category</th>
+                        <th scope="col">Modifying</th>
                     </tr>
                     </thead>
 
@@ -94,11 +95,27 @@
                                 <td>
                                     <h6 class="h6Index">{{$book['category']}}</h6>
                                 </td>
+                                <td>
+                                    <div class="my-1">
+                                        <a href="{{route('manage.bookEditing', $book['id'])}}"
+                                           class="btn btn-outline-secondary btn-sm col-10 pt-pb-2" role="button">Edit
+                                        </a>
+                                    </div>
+                                        <a href="{{route('manage.deleteBook', $book['id'])}}"
+                                           class="btn btn-outline-danger btn-sm col-10" role="button">Delete
+                                        </a>
+                                </td>
                             </tr>
                             </tbody>
                         @endforeach
                     @endif
                 </table>
+
+                <div class="d-flex justify-content-center">
+                    <a href="{{route('manage.addBook')}}"
+                       class="btn btn-primary btn-sm" role="button">Add book
+                    </a>
+                </div>
 
             </div>
 

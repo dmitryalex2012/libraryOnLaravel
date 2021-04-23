@@ -13,10 +13,10 @@
 
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-2">
 
                 {{-- "Filters" section--}}
-                <h3 class="d-flex justify-content-center">Filters</h3>
+                <h3 class="fw-light fs-5 text-center">Filters</h3>
 
                 <form method="Get" action="{{route('manage.users')}}">
                     <p class="pt-3 pb-1 mb-0 d-flex justify-content-center">Sorting by:</p>
@@ -44,7 +44,7 @@
 
                     <p class="pt-3 pb-1 mb-0 d-flex justify-content-center">Find by user name:</p>
                     <label class="d-flex justify-content-center">
-                        <input type="text" name="findText">
+                        <input class="w-100" type="text" name="findText">
                     </label>
                     <br>
 
@@ -57,7 +57,7 @@
             </div>
 
             {{-- "Users list" section --}}
-            <div class="col-md-9">
+            <div class="col-md-10">
 
                 <p class="d-flex justify-content-center">Users</p>
 

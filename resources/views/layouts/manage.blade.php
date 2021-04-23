@@ -39,14 +39,15 @@
     </h2>
 
     <div class="row">
-        <div class="col-2 d-flex justify-content-center">
-                <nav class="nav flex-column">
-                    <a class="nav-link" href="{{route('manage.books')}}">Books</a>
-                    <a class="nav-link" href="{{route('manage.users')}}">Users</a>
-                </nav>
+        <div class="col-sm-1 d-flex justify-content-center">
+            <nav class="nav flex-column">
+                <p class="fw-light fs-5 text-center">Lists</p>
+                <a class="nav-link" href="{{route('manage.books')}}">Books</a>
+                <a class="nav-link" href="{{route('manage.users')}}">Users</a>
+            </nav>
         </div>
 
-        <div class="col-10">
+        <div class="col-sm-11">
             @yield('content')
         </div>
     </div>

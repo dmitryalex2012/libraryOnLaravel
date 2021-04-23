@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookServices
 {
@@ -43,8 +44,23 @@ class BookServices
             }
         }
 
-        $filteredBooks = $bookQuery->paginate(5);
+        $filteredBooks = $bookQuery->paginate(5)->withPath("?" . $request->getQueryString());
 
         return $filteredBooks;
+    }
+
+    public function getBook($id)
+    {
+//        $bookTitle = DB::table('books')->where('id', '=', $id)->first();
+        $bookTitle = Book::query()->where('id', '=', $id)->get()->toArray();
+
+        return $bookTitle;
+    }
+
+    public function bookDelete($id)
+    {
+        DB::table('books')->where('id', '=', $id)->delete();
+
+        return;
     }
 }
