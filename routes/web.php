@@ -27,12 +27,12 @@ Route::prefix('manage')->middleware('role:superadministrator')->group(function (
     Route::get('dashboard', 'ManageController@dashboard')->name('manage.dashboard');
     Route::get('books', 'ManageController@books')->name('manage.books');
     Route::get('users', 'ManageController@users')->name('manage.users');
-    Route::get('users/edit/{id}', 'ManageController@editUser')->name('manage.editUser');
-    Route::post('user/edited{id}', 'ManageController@editedUser')->name('manage.userEdited');
+    Route::get('users/editing/{id}', 'ManageController@userEditing')->name('manage.userEditing');
+    Route::post('user/edited{id}', 'ManageController@userEdited')->name('manage.userEdited');
     Route::get('user/add', 'ManageController@addUser')->name('manage.addUser');
     Route::post('user/added', 'ManageController@userAdded')->name('manage.userAdded');
     Route::get('book/editing/{id}', 'ManageController@bookEditing')->name('manage.bookEditing');
-    Route::post('book/edit{id}', 'ManageController@editBook')->name('manage.editBook');
+    Route::post('book/edited{id}', 'ManageController@bookEdited')->name('manage.bookEdited');
     Route::get('book/delete/{id}', 'ManageController@deleteBook')->name('manage.deleteBook');
     Route::get('book/add', 'ManageController@addBook')->name('manage.addBook');
 });

@@ -89,7 +89,7 @@
                                     <h6>{{$user['created_at']}}</h6>
                                 </td>
                                 <td>
-                                    <a href="{{route('manage.editUser', $user->id)}}"
+                                    <a href="{{route('manage.userEditing', $user->id)}}"
                                        class="btn btn-primary btn-sm" role="button">Edit
                                     </a>
                                 </td>

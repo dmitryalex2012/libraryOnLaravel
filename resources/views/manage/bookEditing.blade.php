@@ -15,7 +15,7 @@
 
         <div class="card-body">
 
-            <form method="POST" action="{{ route('manage.userEdit', $book['id']) }}">
+            <form method="POST" action="{{ route('manage.bookEdited', $book['id']) }}">
                 @csrf
 
                 <div class="form-group mb-4">

@@ -82,11 +82,11 @@ class ManageController extends Controller
      * @param $id
      * @return Factory|View
      */
-    public function editUser($id)
+    public function userEditing($id)
     {
         $user = $this->userServices->getUser($id);
 
-        return view('manage.editUser', [
+        return view('manage.userEditing', [
             'user' => $user['0'],
             'pageTitle' => 'User editing'
         ]);
@@ -100,7 +100,7 @@ class ManageController extends Controller
      * @param $oldID
      * @return Factory|View
      */
-    public function editedUser(Request $request, $oldID)
+    public function userEdited(Request $request, $oldID)
     {
         $validator = $this->userServices->validUser($request, $oldID);
 
@@ -156,13 +156,13 @@ class ManageController extends Controller
         ]);
     }
 
-    public function editBook($id)
+    public function bookEdited($id)
     {
         $book = $this->bookServices->getBook($id);
         $title = $book[0]['title'];
 
-        return view('manage.bookModified', [
-            'message' => " . $title . " . 'book edited.'
+        return view('manage.bookEdited', [
+            'message' => "$title" . 'book edited.'
         ]);
     }
 
