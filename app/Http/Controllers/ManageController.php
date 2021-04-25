@@ -156,10 +156,21 @@ class ManageController extends Controller
         ]);
     }
 
-    public function bookEdited($id)
+    /**
+     * Performs book validation and save to DB.
+     * This class is used for editing and creating users.
+     *
+     * @param Request $request
+     * @param $oldID
+     * @return Factory|View
+     */
+    public function bookEdited(Request $request, $oldID)
     {
-        $book = $this->bookServices->getBook($id);
-        $title = $book[0]['title'];
+        $validator = $this->bookServices->validBook($request, $oldID);
+        $title = $validator['title'];
+
+        $this->bookServices->bookDelete($oldID);
+        $this->bookServices->saveBookDB($validator);
 
         return view('manage.bookEdited', [
             'message' => "$title" . 'book edited.'
@@ -168,7 +179,7 @@ class ManageController extends Controller
 
     public function addBook()
     {
-        return view('manage.bookModified', [
+        return view('manage.bookEdited', [
             'message' => 'book added.'
         ]);
     }
@@ -180,7 +191,7 @@ class ManageController extends Controller
 
         $this->bookServices->bookDelete($id);
 
-        return view('manage.bookModified', [
+        return view('manage.bookEdited', [
             'message' => "$title" . 'book deleted.'
         ]);
     }

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class BookServices
 {
@@ -57,6 +58,60 @@ class BookServices
         return $bookTitle;
     }
 
+    /**
+     * Performs user validation after user data changing by superadministrator.
+     *
+     * @param Request $request
+     * @param $oldID
+     * @return array
+     */
+    public function validBook(Request $request, $oldID)
+    {
+        $validator = $request->validate([
+            'id' => [
+                'numeric',
+                'required',
+                Rule::unique('App\Book')->ignore($oldID)
+            ],
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'required|string',
+            'category' => 'required|string',
+            'language' => 'required|string',
+            'publishing_year' => 'required|numeric',
+            'created_at' => 'required|date'
+        ]);
+
+        return $validator;
+    }
+
+    /**
+     * Saves book to DB.
+     *
+     * @param $book
+     */
+    public function saveBookDB($book)
+    {
+        DB::table('books')->insert([
+            'id' => $book['id'],
+            'title' => $book['title'],
+            'author' => $book['author'],
+            'description' => $book['description'],
+            'book_cover' => 'https://picsum.photos/480/640/?81598',
+            'category' => $book['category'],
+            'language' => $book['language'],
+            'publishing_year' => $book['publishing_year'],
+            'created_at' => $book['created_at']
+        ]);
+
+        return;
+    }
+
+    /**
+     * Deletes book from DB by ID
+     *
+     * @param $id
+     */
     public function bookDelete($id)
     {
         DB::table('books')->where('id', '=', $id)->delete();

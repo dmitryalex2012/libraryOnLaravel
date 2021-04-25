@@ -51,19 +51,30 @@
                     @error('description')
                     <div class="alert alert-danger">{{$errors->first('description')}}</div>
                     @enderror
-                    <label for="description" class="form-label d-flex justify-content-center mb-2">description</label>
+                    <label for="description" class="form-label d-flex justify-content-center mb-2">Description</label>
                     <input type="text" class="form-control d-flex justify-content-center mb-2" id="description"
                            name="description" placeholder="{{$book['description']}}" value="{{ old('description') }}">
                 </div>
 
-{{--                <div class="form-group mb-4">--}}
-{{--                    @error('book_cover')--}}
-{{--                    <div class="alert alert-danger">{{$errors->first('book_cover')}}</div>--}}
-{{--                    @enderror--}}
-{{--                    <label for="book_cover" class="form-label d-flex justify-content-center mb-2">Book cover</label>--}}
+                <div class="form-group mb-4">
+                    @error('book_cover')
+                    <div class="alert alert-danger">{{$errors->first('book_cover')}}</div>
+                    @enderror
+                    <label for="book_cover" class="form-label d-flex justify-content-center mb-2">Book cover</label>
+                    <img src="{{$book['book_cover']}}" alt="" class="">-
 {{--                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="book_cover"--}}
 {{--                           name="book_cover" placeholder="{{$book['book_cover']}}" value="{{ old('book_cover') }}">--}}
-{{--                </div>--}}
+
+                <!--                --><?php //if (!empty($userData['photo'])): ?>
+                    {{--                <label class="userAvatarLabel">Avatar</label><br>--}}
+                    {{--                <img src="<?php echo $userData['photo']; ?>" alt="" class="userAvatar">--}}
+                    {{--                <br>--}}
+                <!--                --><?php //endif; ?>
+
+                    <label for="userAvatar">For change avatar</label>
+                    <input id="userAvatar" type="file" name="userPhoto">
+
+                </div>
 
                 <div class="form-group mb-4">
                     @error('category')
@@ -75,6 +86,15 @@
                 </div>
 
                 <div class="form-group mb-4">
+                    @error('language')
+                    <div class="alert alert-danger">{{$errors->first('language')}}</div>
+                    @enderror
+                    <label for="language" class="form-label d-flex justify-content-center mb-2">Language</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="language"
+                           name="language" placeholder="{{$book['language']}}" value="{{ old('language') }}">
+                </div>
+
+                <div class="form-group mb-4">
                     @error('publishing_year')
                     <div class="alert alert-danger">{{$errors->first('publishing_year')}}</div>
                     @enderror
@@ -83,6 +103,17 @@
                     <input type="text" class="form-control d-flex justify-content-center mb-2" id="publishing_year"
                            name="publishing_year" placeholder="{{$book['publishing_year']}}"
                            value="{{ old('publishing_year') }}">
+                </div>
+
+                <div class="form-group mb-4">
+                    @error('created_at')
+                    <div class="alert alert-danger">{{$errors->first('created_at')}}</div>
+                    @enderror
+                    <label for="created_at" class="form-label d-flex justify-content-center mb-2">Created at
+                    </label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="created_at"
+                           name="created_at" placeholder="{{$book['created_at']}}"
+                           value="{{ old('created_at') }}">
                 </div>
 
                 <div class="form-group row mb-0">

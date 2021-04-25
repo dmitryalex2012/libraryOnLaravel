@@ -102,6 +102,11 @@ class UserServices
     public function validUser(Request $request, $oldID)
     {
         $validator = $request->validate([
+            'id' => [
+                'numeric',
+                'required',
+                Rule::unique('App\User')->ignore($oldID)
+            ],
             'name' => 'required|string',
             'email' => [
                 'required',
