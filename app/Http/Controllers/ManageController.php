@@ -166,14 +166,20 @@ class ManageController extends Controller
      */
     public function bookEdited(Request $request, $oldID)
     {
+//        dd($request);
         $validator = $this->bookServices->validBook($request, $oldID);
+//        dd($validator);
         $title = $validator['title'];
+        $validator['book_cover'] = $request->file('userCover')->store('uploads', 'public');
+//        dd($validator);
+//        $validator['book_cover'] = $this->bookServices->changeBookCover($validator);
 
-        $this->bookServices->bookDelete($oldID);
-        $this->bookServices->saveBookDB($validator);
+//        $this->bookServices->bookDelete($oldID);
+//        $this->bookServices->saveBookDB($validator);
 
         return view('manage.bookEdited', [
-            'message' => "$title" . 'book edited.'
+            'message' => "$title' . 'book edited.",
+            'path' => $validator['book_cover']
         ]);
     }
 

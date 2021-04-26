@@ -15,7 +15,7 @@
 
         <div class="card-body">
 
-            <form method="POST" action="{{ route('manage.bookEdited', $book['id']) }}">
+            <form method="POST" action="{{ route('manage.bookEdited', $book['id']) }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group mb-4">
@@ -57,22 +57,17 @@
                 </div>
 
                 <div class="form-group mb-4">
-                    @error('book_cover')
+                    @error('userCover')
                     <div class="alert alert-danger">{{$errors->first('book_cover')}}</div>
                     @enderror
-                    <label for="book_cover" class="form-label d-flex justify-content-center mb-2">Book cover</label>
-                    <img src="{{$book['book_cover']}}" alt="" class="">-
-{{--                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="book_cover"--}}
-{{--                           name="book_cover" placeholder="{{$book['book_cover']}}" value="{{ old('book_cover') }}">--}}
-
-                <!--                --><?php //if (!empty($userData['photo'])): ?>
-                    {{--                <label class="userAvatarLabel">Avatar</label><br>--}}
-                    {{--                <img src="<?php echo $userData['photo']; ?>" alt="" class="userAvatar">--}}
-                    {{--                <br>--}}
-                <!--                --><?php //endif; ?>
-
-                    <label for="userAvatar">For change avatar</label>
-                    <input id="userAvatar" type="file" name="userPhoto">
+                    <label for="userCover" class="form-label d-flex justify-content-center">Book cover</label>
+                    <div class="d-flex justify-content-center mb-2">
+                        <img src="{{$book['book_cover']}}" width="100" height="100" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <label for="userCover">For change book title </label>
+                        <input id="userCover" type="file" name="userCover">
+                    </div>
 
                 </div>
 

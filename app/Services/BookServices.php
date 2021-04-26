@@ -52,7 +52,6 @@ class BookServices
 
     public function getBook($id)
     {
-//        $bookTitle = DB::table('books')->where('id', '=', $id)->first();
         $bookTitle = Book::query()->where('id', '=', $id)->get()->toArray();
 
         return $bookTitle;
@@ -75,9 +74,10 @@ class BookServices
             ],
             'title' => 'required|string',
             'author' => 'required|string',
-            'description' => 'required|string',
-            'category' => 'required|string',
-            'language' => 'required|string',
+            'description' => 'nullable|string',
+            'userTitle' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category' => 'nullable|string',
+            'language' => 'nullable|string',
             'publishing_year' => 'required|numeric',
             'created_at' => 'required|date'
         ]);
@@ -117,5 +117,10 @@ class BookServices
         DB::table('books')->where('id', '=', $id)->delete();
 
         return;
+    }
+
+    public function changeBookCover($book)
+    {
+        return $book;
     }
 }
