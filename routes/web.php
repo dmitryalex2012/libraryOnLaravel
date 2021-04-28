@@ -35,6 +35,7 @@ Route::prefix('manage')->middleware('role:superadministrator')->group(function (
     Route::post('book/edited{id}', 'ManageController@bookEdited')->name('manage.bookEdited');
     Route::get('book/delete/{id}', 'ManageController@deleteBook')->name('manage.deleteBook');
     Route::get('book/add', 'ManageController@addBook')->name('manage.addBook');
+    Route::post('book/added', 'ManageController@bookAdded')->name('manage.bookAdded');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

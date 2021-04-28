@@ -132,6 +132,9 @@ class ManageController extends Controller
     }
 
     /**
+     * Performs the user validation and saving to DB.
+     * This class is used for user editing and creating.
+     *
      * @param AddUserRequest $request
      * @return Factory|View
      */
@@ -145,6 +148,12 @@ class ManageController extends Controller
         ]);
     }
 
+    /**
+     * Begins the book editing procedure.
+     *
+     * @param $id
+     * @return Factory|View
+     */
     public function bookEditing($id)
     {
         $book = $this->bookServices->getBook($id);
@@ -158,7 +167,7 @@ class ManageController extends Controller
 
     /**
      * Performs book validation and save to DB.
-     * This class is used for editing and creating users.
+     * This class is used for book editing and creating.
      *
      * @param Request $request
      * @param $oldID
@@ -166,30 +175,63 @@ class ManageController extends Controller
      */
     public function bookEdited(Request $request, $oldID)
     {
-//        dd($request);
         $validator = $this->bookServices->validBook($request, $oldID);
-//        dd($validator);
-        $title = $validator['title'];
-        $validator['book_cover'] = $request->file('userCover')->store('uploads', 'public');
-//        dd($validator);
-//        $validator['book_cover'] = $this->bookServices->changeBookCover($validator);
 
-//        $this->bookServices->bookDelete($oldID);
-//        $this->bookServices->saveBookDB($validator);
+        if (isset($request['userCover'])) {
+            $path = $request->file('userCover')->store('uploads', 'public');
+            $validator['book_cover'] = asset('/storage/' . $path);
+        }
+
+        $book = $this->bookServices->changeBookCover($validator, $oldID);
 
         return view('manage.bookEdited', [
-            'message' => "$title' . 'book edited.",
-            'path' => $validator['book_cover']
+            'message' => '"' . $validator['title'] . '"' . ' book edited.',
+            'path' => $book['book_cover']
         ]);
     }
 
+    /**
+     * Adds book to DB.
+     *
+     * @return Factory|View
+     */
     public function addBook()
     {
-        return view('manage.bookEdited', [
-            'message' => 'book added.'
+        return view('manage.addingBook', [
+            'book' => [
+                'id' => 'id',
+                'title' => 'title',
+                'author' => 'author',
+                'description' => 'description',
+                'book_cover' => 'book cover',
+                'category' => 'category',
+                'language' => 'language',
+                'publishing_year' => 'publishing year',
+                'created_at' => 'created at'
+            ],
+            'pageTitle' => 'Book adding'
+        ]);
+//        return view('manage.bookEdited', [
+//            'message' => 'book added.'
+//        ]);
+    }
+
+    public function bookAdded(AddUserRequest $request)
+    {
+//        $validated = $request->validated();
+//        $this->userServices->saveUserDB($request);
+
+        return view('manage.userEdited', [
+//            'user' => $validated
         ]);
     }
 
+    /**
+     * Deletes book from DB.
+     *
+     * @param $id
+     * @return Factory|View
+     */
     public function deleteBook($id)
     {
         $book = $this->bookServices->getBook($id);

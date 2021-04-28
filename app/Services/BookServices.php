@@ -74,10 +74,10 @@ class BookServices
             ],
             'title' => 'required|string',
             'author' => 'required|string',
-            'description' => 'nullable|string',
-            'userTitle' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category' => 'nullable|string',
-            'language' => 'nullable|string',
+            'description' => 'required|string',
+            'userCover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category' => 'required|string',
+            'language' => 'required|string',
             'publishing_year' => 'required|numeric',
             'created_at' => 'required|date'
         ]);
@@ -97,7 +97,7 @@ class BookServices
             'title' => $book['title'],
             'author' => $book['author'],
             'description' => $book['description'],
-            'book_cover' => 'https://picsum.photos/480/640/?81598',
+            'book_cover' => $book['book_cover'],
             'category' => $book['category'],
             'language' => $book['language'],
             'publishing_year' => $book['publishing_year'],
@@ -119,8 +119,24 @@ class BookServices
         return;
     }
 
-    public function changeBookCover($book)
+    /**
+     * Changes book cover. Takes old book cover in case absence loaded book cover.
+     * Saves book to DB.
+     *
+     * @param $book
+     * @param $oldID
+     * @return mixed
+     */
+    public function changeBookCover($book, $oldID)
     {
+        if (!isset($book['book_cover'])) {
+            $oldBook = $this->getBook($oldID);
+            $book['book_cover'] = $oldBook['0']['book_cover'];
+        }
+
+        $this->bookDelete($oldID);
+        $this->saveBookDB($book);
+
         return $book;
     }
 }
