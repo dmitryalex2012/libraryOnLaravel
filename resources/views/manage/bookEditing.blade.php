@@ -65,7 +65,7 @@
                         <img src="{{$book['book_cover']}}" width="100" height="100" alt="">
                     </div>
                     <div class="d-flex justify-content-center">
-                        <label for="userCover">For change book title </label>
+                        <label for="userCover">For change book cover </label>
                         <input id="userCover" type="file" name="userCover">
                     </div>
 

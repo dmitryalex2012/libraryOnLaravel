@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddBookRequest;
 use App\Http\Requests\AddUserRequest;
 use App\Services\BookServices;
 use App\Services\UserServices;
@@ -140,11 +141,11 @@ class ManageController extends Controller
      */
     public function userAdded(AddUserRequest $request)
     {
-        $validated = $request->validated();
+        $user = $request->validated();
         $this->userServices->saveUserDB($request);
 
         return view('manage.userEdited', [
-            'user' => $validated
+            'user' => $user
         ]);
     }
 
@@ -175,17 +176,17 @@ class ManageController extends Controller
      */
     public function bookEdited(Request $request, $oldID)
     {
-        $validator = $this->bookServices->validBook($request, $oldID);
+        $book = $this->bookServices->validBook($request, $oldID);
 
-        if (isset($request['userCover'])) {
-            $path = $request->file('userCover')->store('uploads', 'public');
-            $validator['book_cover'] = asset('/storage/' . $path);
+        if (isset($request['book_cover'])) {
+            $path = $request->file('book_cover')->store('uploads', 'public');
+            $book['book_cover'] = asset('/storage/' . $path);
         }
 
-        $book = $this->bookServices->changeBookCover($validator, $oldID);
+        $book = $this->bookServices->changeBookCover($book, $oldID);
 
         return view('manage.bookEdited', [
-            'message' => '"' . $validator['title'] . '"' . ' book edited.',
+            'message' => '"' . $book['title'] . '"' . ' book edited.',
             'path' => $book['book_cover']
         ]);
     }
@@ -211,18 +212,20 @@ class ManageController extends Controller
             ],
             'pageTitle' => 'Book adding'
         ]);
-//        return view('manage.bookEdited', [
-//            'message' => 'book added.'
-//        ]);
     }
 
-    public function bookAdded(AddUserRequest $request)
+    public function bookAdded(AddBookRequest $request)
     {
-//        $validated = $request->validated();
-//        $this->userServices->saveUserDB($request);
+        $book = $request->validated();
 
-        return view('manage.userEdited', [
-//            'user' => $validated
+        $path = $request->file('userCover')->store('uploads', 'public');
+        $book['book_cover'] = asset('/storage/' . $path);
+
+
+        $this->bookServices->saveBookDB($request);
+
+        return view('manage.bookEdited', [
+            'book' => $book
         ]);
     }
 

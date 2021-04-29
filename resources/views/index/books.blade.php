@@ -15,7 +15,7 @@
 
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-2">
 
                 {{-- "Filters" section --}}
                 <h3 class="h3Index">Filters</h3>
@@ -56,7 +56,7 @@
             </div>
 
             {{-- "Books list" section --}}
-            <div class="col-md-9">
+            <div class="col-md-10">
 
                 <table class="table table-bordered border-success">
                     <thead>
@@ -65,8 +65,9 @@
                             <th class="secondTd" scope="col">Book title</th>
                             <th class="thirdTd" scope="col">Book author</th>
                             <th class="fourthTd" scope="col">Book description</th>
-                            <th class="fifthTd" scope="col">Book data</th>
+                            <th class="fifthTd" scope="col">Published</th>
                             <th class="sixthTd" scope="col">Category</th>
+                            <th class="sevenTd" scope="col">Language</th>
                         </tr>
                     </thead>
 
@@ -92,6 +93,9 @@
                                 </td>
                                 <td>
                                     <h6 class="h6Index">{{$book['category']}}</h6>
+                                </td>
+                                <td>
+                                    <h6 class="h6Index">{{$book['language']}}</h6>
                                 </td>
                             </tr>
                         </tbody>

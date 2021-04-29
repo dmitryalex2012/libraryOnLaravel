@@ -36,28 +36,75 @@
                 </div>
 
                 <div class="form-group mb-4">
-                    @error('email')
-                    <div class="alert alert-danger">{{$errors->first('email')}}</div>
+                    @error('book_cover')
+                    <div class="alert alert-danger">{{$errors->first('book_cover')}}</div>
                     @enderror
-                    <label for="email" class="form-label d-flex justify-content-center mb-2">Email</label>
-                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="email"
-                           name="email" placeholder="{{$book['email']}}" value="{{ old('email') }}">
+                    <label for="book_cover" class="form-label d-flex justify-content-center">Book cover</label>
+{{--                    <div class="d-flex justify-content-center mb-2">--}}
+{{--                        <img src="{{$book['book_cover']}}" width="100" height="100" alt="">--}}
+{{--                    </div>--}}
+                    <div class="d-flex justify-content-center">
+                        <label for="book_cover">Choose book cover </label>
+                        <input id="book_cover" type="file" name="book_cover">
+                    </div>
+
                 </div>
 
                 <div class="form-group mb-4">
-                    @error('password')
-                    <div class="alert alert-danger">{{$errors->first('password')}}</div>
+                    @error('author')
+                    <div class="alert alert-danger">{{$errors->first('author')}}</div>
                     @enderror
-                    <label for="password" class="form-label d-flex justify-content-center mb-2">Password</label>
-                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="password"
-                           name="password" placeholder="{{$book['password']}}" value="{{ old('password') }}">
+                    <label for="author" class="form-label d-flex justify-content-center mb-2">Author</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="author"
+                           name="author" placeholder="{{$book['author']}}" value="{{ old('author') }}">
+                </div>
+
+                <div class="form-group mb-4">
+                    @error('description')
+                    <div class="alert alert-danger">{{$errors->first('description')}}</div>
+                    @enderror
+                    <label for="description" class="form-label d-flex justify-content-center mb-2">Description</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="description"
+                           name="description" placeholder="{{$book['description']}}" value="{{ old('description') }}">
+                </div>
+
+                <div class="form-group mb-4">
+                    @error('publishing_year')
+                    <div class="alert alert-danger">{{$errors->first('publishing_year')}}</div>
+                    @enderror
+                    <label for="publishing_year" class="form-label d-flex justify-content-center mb-2">
+                        Book published
+                    </label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="publishing_year"
+                           name="publishing_year" placeholder="{{$book['publishing_year']}}"
+                           value="{{ old('publishing_year') }}">
+                </div>
+
+                <div class="form-group mb-4">
+                    @error('category')
+                    <div class="alert alert-danger">{{$errors->first('category')}}</div>
+                    @enderror
+                    <label for="category" class="form-label d-flex justify-content-center mb-2">Category</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="category"
+                           name="category" placeholder="{{$book['category']}}" value="{{ old('category') }}">
+                </div>
+
+                <div class="form-group mb-4">
+                    @error('language')
+                    <div class="alert alert-danger">{{$errors->first('language')}}</div>
+                    @enderror
+                    <label for="language" class="form-label d-flex justify-content-center mb-2">Language</label>
+                    <input type="text" class="form-control d-flex justify-content-center mb-2" id="language"
+                           name="language" placeholder="{{$book['language']}}" value="{{ old('language') }}">
                 </div>
 
                 <div class="form-group mb-4">
                     @error('created_at')
                     <div class="alert alert-danger">{{$errors->first('created_at')}}</div>
                     @enderror
-                    <label for="created_at" class="form-label d-flex justify-content-center mb-2">Created at</label>
+                    <label for="created_at" class="form-label d-flex justify-content-center mb-2">
+                        Book creating date
+                    </label>
                     <input type="text" class="form-control d-flex justify-content-center mb-2" id="created_at"
                            name="created_at" placeholder="{{$book['created_at']}}" value="{{ old('created_at') }}">
                 </div>
