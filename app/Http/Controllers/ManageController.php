@@ -168,7 +168,7 @@ class ManageController extends Controller
 
     /**
      * Performs book validation and save to DB.
-     * This class is used for book editing and creating.
+     * This class is used for book editing.
      *
      * @param Request $request
      * @param $oldID
@@ -187,7 +187,6 @@ class ManageController extends Controller
 
         return view('manage.bookEdited', [
             'message' => '"' . $book['title'] . '"' . ' book edited.',
-            'path' => $book['book_cover']
         ]);
     }
 
@@ -214,18 +213,24 @@ class ManageController extends Controller
         ]);
     }
 
+    /**
+     * Performs book validation and save to DB.
+     * This class is used for book creation.
+     *
+     * @param AddBookRequest $request
+     * @return Factory|View
+     */
     public function bookAdded(AddBookRequest $request)
     {
         $book = $request->validated();
 
-        $path = $request->file('userCover')->store('uploads', 'public');
+        $path = $request->file('book_cover')->store('uploads', 'public');
         $book['book_cover'] = asset('/storage/' . $path);
 
-
-        $this->bookServices->saveBookDB($request);
+        $this->bookServices->saveBookDB($book);
 
         return view('manage.bookEdited', [
-            'book' => $book
+            'message' => '"' . $book['title'] . '"' . ' book added.'
         ]);
     }
 

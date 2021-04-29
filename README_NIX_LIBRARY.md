@@ -9,6 +9,7 @@ Loading project algorithm.
 7. Configure the local web server and ".env" file for mail sanding through "smtp" server.
 8. Install "Laratrust" according to https://laratrust.santigarcor.me/docs/6.x/installation.html.
     Perform migration and seeding.
+9. Make link to "storage" directory using "php artisan storage:link" command (used for image files loading).
 
 P. S.
 1. (For item 7) Setting for mail sending (set "tls" instead of "ssl"):

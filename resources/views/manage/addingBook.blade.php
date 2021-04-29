@@ -14,7 +14,7 @@
                 <h3 class="d-flex justify-content-center">{{$pageTitle}}</h3>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('manage.bookAdded') }}">
+            <form method="POST" action="{{ route('manage.bookAdded') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group mb-4">
@@ -40,9 +40,9 @@
                     <div class="alert alert-danger">{{$errors->first('book_cover')}}</div>
                     @enderror
                     <label for="book_cover" class="form-label d-flex justify-content-center">Book cover</label>
-{{--                    <div class="d-flex justify-content-center mb-2">--}}
-{{--                        <img src="{{$book['book_cover']}}" width="100" height="100" alt="">--}}
-{{--                    </div>--}}
+                    <div class="d-flex justify-content-center mb-2">
+                        <img src="{{$book['book_cover']}}" width="100" height="100" alt="">
+                    </div>
                     <div class="d-flex justify-content-center">
                         <label for="book_cover">Choose book cover </label>
                         <input id="book_cover" type="file" name="book_cover">

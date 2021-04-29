@@ -98,7 +98,6 @@ class BookServices
             'author' => $book['author'],
             'description' => $book['description'],
             'book_cover' => $book['book_cover'],
-//            'book_cover' => 'https://picsum.photos/480/640/?23793',
             'category' => $book['category'],
             'language' => $book['language'],
             'publishing_year' => $book['publishing_year'],
