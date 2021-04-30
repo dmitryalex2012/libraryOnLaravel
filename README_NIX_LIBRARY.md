@@ -10,6 +10,8 @@ Loading project algorithm.
 8. Install "Laratrust" according to https://laratrust.santigarcor.me/docs/6.x/installation.html.
     Perform migration and seeding.
 9. Make link to "storage" directory using "php artisan storage:link" command (used for image files loading).
+10. For perform authentication using socials network:
+    - install Socialite package using "composer require laravel/socialite" command; 
 
 P. S.
 1. (For item 7) Setting for mail sending (set "tls" instead of "ssl"):
