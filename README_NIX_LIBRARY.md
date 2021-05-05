@@ -11,7 +11,8 @@ Loading project algorithm.
     Perform migration and seeding.
 9. Make link to "storage" directory using "php artisan storage:link" command (used for image files loading).
 10. For perform authentication using socials network:
-    - install Socialite package using "composer require laravel/socialite" command; 
+    - install Socialite package using "composer require laravel/socialite" command;
+    - make "localhost" as initial domain and "libraryOnLaravel.loc" as destination domain in aliases of openserver. 
 
 P. S.
 1. (For item 7) Setting for mail sending (set "tls" instead of "ssl"):

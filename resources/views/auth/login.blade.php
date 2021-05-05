@@ -14,10 +14,13 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">
+                                {{ __('E-Mail Address') }}
+                            </label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                       name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -28,10 +31,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">
+                                {{ __('Password') }}
+                            </label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control
+                                    @error('password') is-invalid @enderror"
+                                       name="password" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +51,8 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox"
+                                           name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
@@ -68,6 +76,21 @@
                         </div>
                     </form>
                 </div>
+                <div class="row">
+                    <div class=" col-6 d-flex justify-content-end">
+{{--                        <a href="{{route('loginGoogle')}}"--}}
+                        <a href="{{url('login/google')}}"
+                            class="btn btn-outline-secondary btn-sm pt-pb-2" role="button">Login with Google
+                        </a>
+                    </div>
+                    <div class=" col-6 d-flex justify-content-start">
+{{--                        <a href="{{route('loginGoogle')}}"--}}
+                        <a href="{{url('login/facebook')}}"
+                           class="btn btn-outline-secondary btn-sm pt-pb-2" role="button">Login with Facebook
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
