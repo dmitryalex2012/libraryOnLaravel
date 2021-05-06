@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Services\AuthServices;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -61,11 +61,9 @@ class LoginController extends Controller
     {
         $user = Socialite::driver($provider)->stateless()->user();
 
-        $existingUser = User::query()->where('email', $user->email)->first();
+        $existingUser = AuthServices::findOrCreateUser($user);
         Auth::login($existingUser, true);
 
-        return view('home', [
-            'name' => $user->name
-        ]);
+        return view('home');
     }
 }

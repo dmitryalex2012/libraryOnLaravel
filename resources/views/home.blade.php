@@ -22,9 +22,6 @@ use Illuminate\Support\Facades\Auth;
                     @if(isset(Auth::user()->name))
                         {{ __('You are logged in, ' . Auth::user()->name) . '!' }}
                     @endif
-{{--                    @if(isset($name))--}}
-{{--                        {{ 'You are logged in, ' . $name . '!' }}--}}
-{{--                    @endif--}}
                 </div>
             </div>
         </div>
