@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-
-/* @var Auth Illuminate\Support\Facades\Auth */
 ?>
 
 @extends('./layouts.app')
