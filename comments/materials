@@ -14,8 +14,22 @@ https://coderoad.ru/10456174/OAuth-%D0%BA%D0%B0%D0%BA-%D1%82%D0%B5%D1%81%D1%82%D
     - register localhost URL in Google;
 https://codeguida.com/post/678 - auth with Google and Facebook (text description).
 
+5. API endpoints (Swagger 3):
+https://www.youtube.com/watch?v=SDIukodcW7c;
+https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration:
+https://starkovden.github.io/swagger-ui-tutorial.html.
+
 P.S.
     1.  "composer require barryvdh/laravel-ide-helper:2.5.0" - for load "Laravel IDE Helper Generator" (generates helper files),
         "php artisan ide-helper:generate" - Automatic PHPDoc generation for Laravel Facades,
         "php artisan ide-helper:models" - Automatic PHPDocs for models
             for deleting "models" and "classes" errors in view files.
+
+    2. For perform authentication using socials network:
+           - install Socialite package using "composer require laravel/socialite" command;
+           - make "localhost" as initial domain and "libraryOnLaravel.loc" as destination domain in aliases of openserver.
+    3. For realization API endpoints:
+           - install plugin Swagger 3 using " composer require "darkaonline/l5-swagger:7.* ";
+           - run the command " php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider" " for
+               publishing L5-Swagger's config and view files into your project;
+           - generate interactive documentation using "php artisan l5-swagger:generate".
