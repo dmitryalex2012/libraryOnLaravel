@@ -16,7 +16,13 @@ namespace App\Http\Controllers\API;
  * )
  * @OA\Server(
  *     description="NIX library Laravel Swagger API server",
- *     url="http://localhost/api"
+ *     url="http://libraryOnLaravel/api"
+ * )
+ * @OA\SecurityScheme(
+ *     type="apiKey",
+ *     in="header",
+ *     name="X-APP-ID",
+ *     securityScheme="X-APP-ID"
  * )
  */
 class Controller

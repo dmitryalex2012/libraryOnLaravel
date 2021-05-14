@@ -32,4 +32,6 @@ P.S.
            - install plugin Swagger 3 using " composer require "darkaonline/l5-swagger:7.* ";
            - run the command " php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider" " for
                publishing L5-Swagger's config and view files into your project;
+           - make controller (for example "BookController") using command "php artisan make:controller API\BooksController --api"
+                and add "@OA\Get()" there;
            - generate interactive documentation using "php artisan l5-swagger:generate".
