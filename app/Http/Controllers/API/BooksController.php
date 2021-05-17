@@ -22,7 +22,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        dd("Hello");
+//        dd("Hello");
     }
 
     /**

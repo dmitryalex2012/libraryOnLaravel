@@ -2,8 +2,13 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Laravel Swagger API documentation for NIX library",
+        "description": "L5 Swagger OpenApi description",
         "contact": {
             "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
         "version": "1.0.0"
     },
@@ -26,15 +31,6 @@
                         "description": "Everything is fine"
                     }
                 }
-            }
-        }
-    },
-    "components": {
-        "securitySchemes": {
-            "X-APP-ID": {
-                "type": "apiKey",
-                "name": "X-APP-ID",
-                "in": "header"
             }
         }
     },

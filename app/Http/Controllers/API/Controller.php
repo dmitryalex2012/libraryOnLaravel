@@ -4,11 +4,16 @@ namespace App\Http\Controllers\API;
 
 /**
  * @OA\Info(
- *     title="Laravel Swagger API documentation for NIX library",
  *     version="1.0.0",
+ *     title="Laravel Swagger API documentation for NIX library",
+ *     description="L5 Swagger OpenApi description",
  *     @OA\Contact(
  *         email="admin@example.com"
  *     ),
+ *     @OA\License(
+ *          name="Apache 2.0",
+ *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *      )
  * )
 * @OA\Tag(
  *     name="NIX library",
@@ -18,14 +23,7 @@ namespace App\Http\Controllers\API;
  *     description="NIX library Laravel Swagger API server",
  *     url="http://libraryOnLaravel/api"
  * )
- * @OA\SecurityScheme(
- *     type="apiKey",
- *     in="header",
- *     name="X-APP-ID",
- *     securityScheme="X-APP-ID"
- * )
  */
 class Controller
 {
-
 }
