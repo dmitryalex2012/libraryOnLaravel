@@ -65,7 +65,7 @@
 </svg>
 
 <div id="swagger-ui"></div>
-
+{{$urlToDocs}}
 <script src="{{ l5_swagger_asset('swagger-ui-bundle.js') }}"> </script>
 <script src="{{ l5_swagger_asset('swagger-ui-standalone-preset.js') }}"> </script>
 <script>
