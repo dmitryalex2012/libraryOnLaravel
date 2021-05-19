@@ -65,13 +65,32 @@
 </svg>
 
 <div id="swagger-ui"></div>
+
+
 {{$urlToDocs}}
+<br>
+<?php
+$contents = file_get_contents('http://libraryonlaravel.loc/docs/api-docs.json');
+?>
+{{--{{$contents}}--}}
+{{--{{$contents or 'Absent'}}--}}
+
+
 <script src="{{ l5_swagger_asset('swagger-ui-bundle.js') }}"> </script>
 <script src="{{ l5_swagger_asset('swagger-ui-standalone-preset.js') }}"> </script>
 <script>
 window.onload = function() {
   // Build a system
-  const ui = SwaggerUIBundle({
+
+
+  // function blade(_)
+  // {
+  //   return _;
+  // }
+  // https://coderoad.ru/51448899/Swagger-%D0%BD%D0%B5-%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D1%83%D0%B5%D1%82-%D1%84%D0%B0%D0%B9%D0%BB%D1%8B-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BE%D0%B2-%D0%B2-laravel-5-6
+
+
+  var ui = SwaggerUIBundle({
     dom_id: '#swagger-ui',
 
     url: "{!! $urlToDocs !!}",
@@ -79,8 +98,13 @@ window.onload = function() {
     configUrl: {!! isset($configUrl) ? '"' . $configUrl . '"' : 'null' !!},
     validatorUrl: {!! isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null' !!},
     oauth2RedirectUrl: "{{ route('l5-swagger.oauth2_callback') }}",
+    {{--url: "{{$urlToDocs}} ",--}}
+    {{--operationsSorter: blade({{isset($operationsSorter) ? '"' . $operationsSorter . '"' : 'null'}}),--}}
+    {{--configUrl: blade({{isset($configUrl) ? '"' . $configUrl . '"' : 'null'}}),--}}
+    {{--validatorUrl: blade({{isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null'}}),--}}
+    {{--oauth2RedirectUrl: "{{ route('l5-swagger.oauth2_callback') }}",--}}
 
-    requestInterceptor: function(request) {
+    requestInterceptor: function (request) {
       request.headers['X-CSRF-TOKEN'] = '{{ csrf_token() }}';
       return request;
     },
