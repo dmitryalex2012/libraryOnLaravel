@@ -16,7 +16,9 @@ Loading project algorithm.
     - install plugin Swagger 3 using " composer require "darkaonline/l5-swagger:7.* ";
     - run the command " php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider" " for 
         publishing L5-Swagger's config and view files into your project;
-    - generate interactive documentation using "php artisan l5-swagger:generate".
+    - generate interactive documentation using "php artisan l5-swagger:generate";
+    - copy files from "libraryOnLaravel\vendor\swagger-api\swagger-ui\dist" and insert its to
+        "libraryOnLaravel\public\docs\asset" (for include "swagger-ui-bundle.js", "swagger-ui-standalone-preset.js");
 
 P. S.
 1. (For item 7) Setting for mail sending (set "tls" instead of "ssl"):

@@ -24,7 +24,7 @@
                 "tags": [
                     "Books"
                 ],
-                "summary": "Display a listing of the books",
+                "summary": "Outputs the books list",
                 "operationId": "examplesAll",
                 "responses": {
                     "200": {

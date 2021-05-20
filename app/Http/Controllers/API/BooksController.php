@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Book;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -11,18 +13,27 @@ class BooksController extends Controller
      *     path="/books",
      *     operationId="examplesAll",
      *     tags={"Books"},
-     *     summary="Display a listing of the books",
+     *     summary="Outputs the books list",
      *     @OA\Response(
      *         response="200",
      *         description="Everything is fine",
      *     )
      * )
      *
-     * @return void
+     * @return JsonResponse
      */
     public function index()
     {
-//        dd("Hello");
+        $books = Book::all();
+//        $books = array(
+//            'foo' => 'bar',
+//            'too' => 'baz'
+//        );
+//        $books = json_encode($books);
+//        dd($books);
+
+        return response()->json($books);
+//        return response($books);
     }
 
     /**
