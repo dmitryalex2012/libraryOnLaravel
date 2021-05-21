@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://libraryOnLaravel/api",
+            "url": "http://libraryOnLaravel.loc/api",
             "description": "NIX library Laravel Swagger API server"
         }
     ],
@@ -26,6 +26,17 @@
                 ],
                 "summary": "Outputs the books list",
                 "operationId": "examplesAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Everything is fine"

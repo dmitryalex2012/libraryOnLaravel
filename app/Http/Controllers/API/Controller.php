@@ -21,7 +21,7 @@ namespace App\Http\Controllers\API;
  * )
  * @OA\Server(
  *     description="NIX library Laravel Swagger API server",
- *     url="http://libraryOnLaravel/api"
+ *     url="http://libraryOnLaravel.loc/api"
  * )
  */
 class Controller

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Book;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -138,5 +139,15 @@ class BookServices
         $this->saveBookDB($book);
 
         return $book;
+    }
+
+    /**
+     * Gets books for API.
+     *
+     * @return LengthAwarePaginator
+     */
+    public static function getBooksAPI()
+    {
+        return Book::query()->paginate(5);
     }
 }

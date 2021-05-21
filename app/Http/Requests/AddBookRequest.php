@@ -19,7 +19,6 @@ class AddBookRequest extends FormRequest
             'author' => 'required|string',
             'description' => 'required|string',
             'book_cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-//            'book_cover' => 'required',
             'category' => 'required|string',
             'language' => 'required|string',
             'publishing_year' => 'required|numeric',

@@ -17,6 +17,4 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-//Route::get('documentation', 'API\BooksController@index');
-//Route::resource('documentation', 'API\BooksController');
 Route::resource('books', 'API\BooksController');
