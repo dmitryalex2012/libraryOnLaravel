@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Book;
 use App\Http\Requests\AddBookRequest;
 use App\Services\BookServices;
 use Illuminate\Http\JsonResponse;
@@ -45,15 +44,15 @@ class BooksController extends Controller
      *     path="/books",
      *     operationId="bookCreate",
      *     tags={"Books"},
-     *     summary="Create yet another book record",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/BookStoreRequest")
-     *     ),
+     *     summary="Create new book in library",
      *     @OA\Response(
      *         response="200",
      *         description="Everything is fine",
-     *         @OA\JsonContent(ref="#/components/schemas/BookShowRequest")
+     *         @OA\Schema(ref="#/components/schemas/BookStoreRequest")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/BookStoreRequest")
      *     ),
      * )
      * Store a newly created resource in storage.
@@ -63,11 +62,26 @@ class BooksController extends Controller
      */
     public function store(AddBookRequest $request)
     {
-        $book = new Book();
-        $book->fill($request->all());
-        $book->save();
+//        $book = new Book();
+//        $book->fill($request->all());
+//        $book->save();
+        $book = [
+            "id" => "5",
+            "title" => "sw",
+            "author" => "A",
+            "description" => "fdvbfds",
+            "book_cover" => "C:\Program Files (x86)\OpenServer\OSPanel\domains\myFramework\web\photo\photo3.jpg",
+            'category' => 'history',
+            "language" => "ngrfs",
+            "publishing_year" => "1981",
+            "created_at" => "2021-02-09 01:43:37",
+            "updated_at" => "2021-02-09 01:43:37"
+        ];
+        $save = new BookServices();
+        $save->saveBookDB($book);
 
-        return response()->json($book);
+//        return response()->json($book);
+        return response('', 201);
     }
 
     /**

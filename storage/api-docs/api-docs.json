@@ -42,6 +42,108 @@
                         "description": "Everything is fine"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Create new book in library",
+                "operationId": "bookCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Everything is fine"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BookStoreRequest": {
+                "title": "Example storring request",
+                "description": "The request for book creation",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "Book ID",
+                        "type": "string",
+                        "format": "int32",
+                        "example": "1"
+                    },
+                    "title": {
+                        "title": "Book",
+                        "description": "Book title",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Star wars"
+                    },
+                    "author": {
+                        "title": "Author",
+                        "description": "Book author",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Pushkin"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "Book description",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Short book description"
+                    },
+                    "book_cover": {
+                        "title": "Book cover",
+                        "description": "Book cover image",
+                        "format": "string",
+                        "example": "Some image"
+                    },
+                    "category": {
+                        "title": "Category",
+                        "description": "Book category",
+                        "type": "string",
+                        "format": "string",
+                        "example": "history"
+                    },
+                    "language": {
+                        "title": "Language",
+                        "description": "Book language",
+                        "type": "string",
+                        "format": "string",
+                        "example": "English"
+                    },
+                    "publishing_year": {
+                        "title": "Publishing year",
+                        "description": "The year of book publishing ",
+                        "type": "string",
+                        "format": "int32",
+                        "example": "1987"
+                    },
+                    "created_at": {
+                        "title": "Book created at",
+                        "description": "Book created at",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-02-02 14:15:03"
+                    },
+                    "updated_at": {
+                        "title": "Book updated at",
+                        "description": "Book updated at",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-02-02 14:15:03"
+                    }
+                },
+                "type": "object"
             }
         }
     },
