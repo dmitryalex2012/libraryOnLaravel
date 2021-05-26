@@ -12,14 +12,14 @@ use URL;
  *     title="Example storring request",
  * )
  */
-class BookStoreRequest
+class BookShowRequest
 {
     /**
      * @OA\Property(
      *     title="ID",
      *     description="Book ID",
      *     format="int64",
-     *     example="1",
+     *     example="2",
      * )
      *
      * @var integer
@@ -30,7 +30,6 @@ class BookStoreRequest
      * @OA\Property(
      *     title="Title",
      *     description="Book title",
-     *     format="string",
      *     example="Star wars",
      * )
      *
@@ -42,7 +41,6 @@ class BookStoreRequest
      * @OA\Property(
      *     title="Author",
      *     description="Book author",
-     *     format="string",
      *     example="Pushkin",
      * )
      *
@@ -54,7 +52,6 @@ class BookStoreRequest
      * @OA\Property(
      *     title="Description",
      *     description="Book description",
-     *     format="string",
      *     example="Short book description",
      * )
      *
@@ -66,7 +63,6 @@ class BookStoreRequest
      * @OA\Property(
      *     title="Book cover",
      *     description="Book cover image",
-     *     format="string",
      *     example="Some image",
      * )
      *
@@ -90,7 +86,6 @@ class BookStoreRequest
      * @OA\Property(
      *     title="Language",
      *     description="Book language",
-     *     format="string",
      *     example="English",
      * )
      *
