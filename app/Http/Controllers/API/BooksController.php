@@ -58,11 +58,14 @@ class BooksController extends Controller
      * )
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\AddBookRequest $request
+     * @param Request $request
      * @return void
      */
+
+//* @param AddBookRequest $request
+//@param \App\Http\Requests\AddBookRequest $request
+    public function store(Request $request)
 //    public function store(AddBookRequest $request)
-    public function store($request)
     {
 //        $book = new Book();
 //        $book->fill($request->all());
@@ -85,7 +88,7 @@ class BooksController extends Controller
 //        return response('', 201);
 
 //        return response()->json($book);
-        return response('Hello', 201);
+        return response($request, 201);
     }
 
     /**

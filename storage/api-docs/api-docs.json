@@ -54,7 +54,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/BookStoreRequest"
+                                "$ref": "app/virtualModelsAPI/BookStoreRequest"
                             }
                         }
                     }
