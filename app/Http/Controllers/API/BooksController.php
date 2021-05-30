@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Book;
-use App\Http\Requests\AddBookRequest;
+use App\Http\Requests\AddAPIBookRequest;
 use App\Services\BookServices;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
+    public $bookServices;
+
+    public function __construct()
+    {
+        $this->bookServices = new BookServices();
+    }
+
     /**
      * @OA\Get(
      *     path="/books",
@@ -58,37 +64,15 @@ class BooksController extends Controller
      * )
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param AddAPIBookRequest $request
      * @return void
      */
 
-//* @param AddBookRequest $request
-//@param \App\Http\Requests\AddBookRequest $request
-    public function store(Request $request)
-//    public function store(AddBookRequest $request)
+    public function store(AddAPIBookRequest $request)
     {
-//        $book = new Book();
-//        $book->fill($request->all());
-//        $book->save();
+        $this->bookServices->saveBookDB($request);
 
-        //        $book = [
-//            "id" => "5",
-//            "title" => "sw",
-//            "author" => "A",
-//            "description" => "fdvbfds",
-//            "book_cover" => "C:\Program Files (x86)\OpenServer\OSPanel\domains\myFramework\web\photo\photo3.jpg",
-//            'category' => 'history',
-//            "language" => "ngrfs",
-//            "publishing_year" => "1981",
-//            "created_at" => "2021-02-09 01:43:37",
-//            "updated_at" => "2021-02-09 01:43:37"
-//        ];
-//        $save = new BookServices();
-//        $save->saveBookDB($book);
-//        return response('', 201);
-
-//        return response()->json($book);
-        return response($request, 201);
+        return response()->json($request);
     }
 
     /**
