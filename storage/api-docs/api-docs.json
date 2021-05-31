@@ -72,6 +72,40 @@
                     }
                 }
             }
+        },
+        "/books/{id}": {
+            "delete": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Delete selected book",
+                "description": "Deletes a selected book",
+                "operationId": "deleteBook",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Book id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     },
     "components": {

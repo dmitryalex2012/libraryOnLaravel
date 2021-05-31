@@ -87,7 +87,49 @@ class BooksController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the book data in storage.
+     *
+     * @OA\Put(
+     *      path="/books/{id}",
+     *      operationId="updateBook",
+     *      tags={"Bookss"},
+     *      summary="Update selected book",
+     *      description="Returns updated book data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Book id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/UpdateBookRequest")
+     *      ),
+     *      @OA\Response(
+     *          response=202,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/Project")
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      *
      * @param Request $request
      * @param int $id
@@ -101,11 +143,39 @@ class BooksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @OA\Delete(
+     *      path="/books/{id}",
+     *      operationId="deleteBook",
+     *      tags={"Books"},
+     *      summary="Delete selected book",
+     *      description="Deletes a selected book",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Book id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     *
      * @param int $id
      * @return void
      */
     public function destroy($id)
     {
-        //
+        $this->bookServices->bookDelete($id);
+
+        return response("Book with id=$id deleted successfully.", 201);
     }
 }
