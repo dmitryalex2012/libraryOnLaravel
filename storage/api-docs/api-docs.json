@@ -74,6 +74,47 @@
             }
         },
         "/books/{id}": {
+            "put": {
+                "tags": [
+                    "Bookss"
+                ],
+                "summary": "Update selected book",
+                "description": "Returns updated book data",
+                "operationId": "updateBook",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Book ID for editing",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateBookRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UpdateBookRequest"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Books"
@@ -100,9 +141,6 @@
                                 "schema": {}
                             }
                         }
-                    },
-                    "401": {
-                        "description": "Resource Not Found"
                     }
                 }
             }
@@ -224,6 +262,70 @@
                         "description": "Book language",
                         "type": "string",
                         "format": "string",
+                        "example": "English"
+                    },
+                    "publishing_year": {
+                        "title": "Publishing year",
+                        "description": "The year of book publishing ",
+                        "type": "integer",
+                        "format": "int32",
+                        "example": "1987"
+                    },
+                    "created_at": {
+                        "title": "Book created at",
+                        "description": "Book created at",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-02-02 14:15:03"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateBookRequest": {
+                "title": "Example storring request",
+                "description": "The request for book creation",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "Book ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "2"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "description": "Book title",
+                        "type": "string",
+                        "example": "Star wars"
+                    },
+                    "author": {
+                        "title": "Author",
+                        "description": "Book author",
+                        "type": "string",
+                        "example": "Pushkin"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "description": "Book description",
+                        "type": "string",
+                        "example": "Short book description"
+                    },
+                    "book_cover": {
+                        "title": "Book cover",
+                        "description": "Book cover image",
+                        "example": "Some image"
+                    },
+                    "category": {
+                        "title": "Category",
+                        "description": "Book category",
+                        "type": "string",
+                        "format": "string",
+                        "example": "history"
+                    },
+                    "language": {
+                        "title": "Language",
+                        "description": "Book language",
+                        "type": "string",
                         "example": "English"
                     },
                     "publishing_year": {

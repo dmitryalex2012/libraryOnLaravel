@@ -167,7 +167,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Performs book validation and save to DB.
+     * Performs book validation and before saving to DB.
      * This class is used for book editing.
      *
      * @param Request $request
@@ -191,7 +191,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Adds book to DB.
+     * Returns book default parameters before adding to DB.
      *
      * @return Factory|View
      */
