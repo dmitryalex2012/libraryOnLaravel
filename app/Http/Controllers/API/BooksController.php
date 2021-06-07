@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Requests\AddAPIBookRequest;
+use App\Http\Requests\EditAPIBookRequest;
 use App\Services\BookServices;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
@@ -92,7 +92,7 @@ class BooksController extends Controller
      * @OA\Put(
      *      path="/books/{id}",
      *      operationId="updateBook",
-     *      tags={"Bookss"},
+     *      tags={"Books"},
      *      summary="Update selected book",
      *      description="Returns updated book data",
      *      @OA\Parameter(
@@ -115,13 +115,14 @@ class BooksController extends Controller
      *       ),
      * )
      *
-     * @param Request $request
+     * @param EditAPIBookRequest $request
      * @param int $id
      * @return void
      */
-    public function update(Request $request, $id)
+    public function update(EditAPIBookRequest $request, $id)
     {
-
+        $this->bookServices->bookDelete($id);
+        $this->bookServices->saveBookDB($request);
 
         return response("Request=$request, id=$id");
     }

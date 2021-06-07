@@ -76,7 +76,7 @@
         "/books/{id}": {
             "put": {
                 "tags": [
-                    "Bookss"
+                    "Books"
                 ],
                 "summary": "Update selected book",
                 "description": "Returns updated book data",
