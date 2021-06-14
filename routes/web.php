@@ -43,4 +43,4 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
-//Route::get('api/documentation', 'API\BooksController@index');
+
