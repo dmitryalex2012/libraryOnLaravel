@@ -56,7 +56,6 @@
 
 
 <footer class="footer">
-    {{--    <div class="container">--}}
     <div class="row">
         <div class="containerLogo col-sm-7 col-12">
             <p class="siteDesigner">&copy; Сечин Дмитрий 2021</p>
@@ -66,7 +65,6 @@
             <a href="https://www.instagram.com/textile_decor_kiev/?hl=uk" target="_blank"><img src='{{ asset('images/inst1.png') }}' alt=""/></a>
         </div>
     </div>
-    {{--    </div>--}}
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
